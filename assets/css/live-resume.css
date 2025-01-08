@@ -27,6 +27,22 @@
   --light: #f8f9fa;
   --dark: #0e0f0f;
   --black: #000000;
+
+  /* CUSTOM PALETTE */
+  /*--text-color-primary: #b9d4f1;*/
+  /*--text-color-secondary: #f1f6f8;*/
+  /*--background-primary: #21273d;*/
+  /*--background-secondary: #6a759b;*/
+
+  --text-color-primary: #f1f6f8;
+  --text-color-secondary: #b9d4f1;
+  --background-primary: #6a759b;
+  --background-secondary: #2f3955;
+
+  /*--text-color: #2b2b2b;*/
+  /*--background-primary: #96897f;*/
+  /*--background-secondary: #c6bcb6;*/
+
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -46,6 +62,68 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+/* FONT */
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-light {
+  font-family: "Ubuntu", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ubuntu-regular {
+  font-family: "Ubuntu", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-medium {
+  font-family: "Ubuntu", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ubuntu-bold {
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-light-italic {
+  font-family: "Ubuntu", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ubuntu-regular-italic {
+  font-family: "Ubuntu", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-medium-italic {
+  font-family: "Ubuntu", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ubuntu-bold-italic {
+  font-family: "Ubuntu", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
@@ -54,13 +132,13 @@ aside{
 }
 
 .highlight {
-  color: var(--primary);
+  color: var(--text-color);
   font-weight: bold;
 }
 
 body {
   margin: 0;
-  font-family: "Georgia", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -68,9 +146,10 @@ body {
   color: #000000;
   text-align: left;
    */
-  color: var(--primary);
+  color: var(--text-color-primary);
   text-align: justify;
-  background-color: #f3f3f3; }
+  background-color: var(--background-primary);
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -7441,7 +7520,8 @@ aside .profile-img-wrapper {
     border-radius: 50%; }
 
 aside .profile-name {
-  font-size: 28px;
+  padding-top: 10px;
+  font-size: 24px;
   font-weight: 600;
   text-align: center;
   line-height: 30px; }
@@ -7481,6 +7561,8 @@ aside .widget {
     margin-bottom: 10px; }
   aside .widget .widget-content {
     font-size: 13px; }
+    aside .widget .widget-content a {
+      color: var(--text-color-primary); }
     aside .widget .widget-content p {
       margin-bottom: 5px; }
       aside .widget .widget-content p:last-of-type {
@@ -7491,6 +7573,7 @@ aside .widget {
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08); }
     aside .widget.card .widget-title {
       color: #013884; }
+
 
 .btn-share {
   padding: 5px 25px;
@@ -7640,8 +7723,10 @@ main {
 
 main {
   padding: 36px 60px 24px;
-  background-color: #ffffff;
+  background-color: var(--background-secondary);
   border-radius: 15px;
+  color: var(--text-color-secondary);
+
 }
   @media (max-width: 767px) {
     main {
@@ -7659,7 +7744,7 @@ main {
     line-height: 1;
     color: #0067f6; }
   main p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.538;
     font-weight: 300; }
   main .intro-section {
@@ -8165,4 +8250,56 @@ main {
   to {
     transform: rotate3d(0, 1, 0, 104deg); } }
 
-/*# sourceMappingURL=live-resume.css.map */
+
+
+/*
+  custom
+*/
+
+
+/* Skills & Certifications Section */
+#skills-certifications {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.skills-certifications-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.column ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.column ul li {
+  margin-bottom: 5px;
+}
+
+/* Dynamically create additional columns if needed */
+.extra-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+}
+
