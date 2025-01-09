@@ -7554,9 +7554,9 @@ aside .social-links {
     display: inline-block;
     font-size: 12px;
     line-height: 1;
-    color: #0067f6;
+    color: var(--background-secondary);
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--text-color-primary);
     padding: 8px;
     width: 28px;
     height: 28px;
