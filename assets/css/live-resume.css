@@ -128,11 +128,10 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 aside{
-  width: 45%;
+  width: 105%;
 }
 
 .highlight {
-  color: var(--text-color);
   font-weight: bold;
 }
 
@@ -683,6 +682,20 @@ pre {
 .col-12 {
   flex: 0 0 100%;
   max-width: 100%; }
+
+.col-lg-6-skills.lists-container {
+  display: flex;
+  gap: 10px; /* Adjust this value to control the space between the lists */
+}
+.col-lg-6-skills.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: disc; /* Default bullet style */
+}
+.col-lg-6-skills.list li {
+  margin: 0;
+  padding: 0;
+}
 
 .order-first {
   order: -1; }
@@ -1920,13 +1933,14 @@ fieldset:disabled a.btn {
   pointer-events: none; }
 
 .btn-primary {
-  color: #ffffff;
-  background-color: #013884;
-  border-color: #013884; }
+  color: var(--background-primary);
+  background-color: var(--text-color-primary);
+}
   .btn-primary:hover {
-    color: #ffffff;
-    background-color: #0057d0;
-    border-color: #0052c3; }
+    color: var(--background-secondary);
+    background-color: var(--text-color-secondary);
+  }
+
   .btn-primary:focus, .btn-primary.focus {
     color: #ffffff;
     background-color: #0057d0;
@@ -1946,13 +1960,13 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(38, 126, 247, 0.5); }
 
 .btn-secondary {
-  color: #ffffff;
-  background-color: #6c757d;
-  border-color: #6c757d; }
+  color: var(--background-secondary);
+  background-color: var(--text-color-secondary);
+}
   .btn-secondary:hover {
-    color: #ffffff;
-    background-color: #5a6268;
-    border-color: #545b62; }
+    color: var(--background-primary);
+    background-color: var(--text-color-primary);
+  }
   .btn-secondary:focus, .btn-secondary.focus {
     color: #ffffff;
     background-color: #5a6268;
@@ -7572,24 +7586,58 @@ aside .widget {
     border-radius: 10px;
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08); }
     aside .widget.card .widget-title {
-      color: #013884; }
+      color: #b61a60; }
+
+aside.button-share-download {
+  background-color: var(--background-secondary);
+
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+}
+
+  aside.button-share-download.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*padding: 10px 20px;*/
+    padding: 6px 30px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  aside.button-share-download.btn-primary {
+    padding: 5px 25px;
+    background-color: var(--background-secondary);
+    color: var(--text-color-secondary);
+  }
+
+  aside.button-share-download.btn-primary:hover {
+    background-color: var(--background-primary);
+  }
+
+aside.button-share-download.btn-img {
+  margin-right: 10px; /* Space between icon and text */
+  height: 20px;
+  width: 20px;
+}
 
 
-.btn-share {
-  padding: 5px 25px;
-  border: 0;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.67;
-  height: 30px; }
-  .btn-share:hover, .btn-share:focus, .btn-share:active {
-    background-color: #ffffff;
-    border: 0; }
-  .btn-share:focus {
-    box-shadow: none; }
-  .btn-share:hover {
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2); }
+/*.btn-share {*/
+/*  padding: 5px 25px;*/
+/*  border: 0;*/
+/*  border-radius: 15px;*/
+/*  font-size: 0.75rem;*/
+/*  font-weight: 500;*/
+/*  line-height: 1.67;*/
+/*  height: 30px; }*/
+/*  .btn-share:hover, .btn-share:focus, .btn-share:active {*/
+/*    background-color: #ffffff;*/
+/*    border: 0; }*/
+/*  .btn-share:focus {*/
+/*    box-shadow: none; }*/
+/*  .btn-share:hover {*/
+/*    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2); }*/
 
 .btn-img {
   height: 10px;
@@ -7795,21 +7843,22 @@ main {
         border-radius: 2px;
         margin-bottom: 8px; }
       main .time-line-item-title {
-        font-size: 12px;
-        font-weight: 700;
+        font-size: 16px;
+        font-weight: 500;
         line-height: 1;
         margin-bottom: 2px; }
       main .time-line-item-subtitle {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 500;
         line-height: 1.6;
-        color: #a7a7a7;
-        margin-bottom: 3px; }
+        /*color: #a7a7a7;*/
+        color: var(--text-color-primary);
+        margin-bottom: 0px; }
       main .time-line-item-content {
         font-size: 10px;
         font-weight: 300;
         line-height: 1.6;
-        margin-bottom: 0; }
+        margin-bottom: 6px; }
   main .services-section {
     margin-bottom: 34px; }
   main .service-card {
