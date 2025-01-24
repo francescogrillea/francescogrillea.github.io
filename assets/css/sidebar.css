@@ -1,0 +1,64 @@
+@import url('colors.css');
+
+sidebar {
+    /*background-color: #0b2e13;*/
+    display: block;
+    /*width: 15%;*/
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+sidebar .profile-img-wrapper img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px #0e0f0f;
+}
+
+sidebar .information-wrapper .profile-name h2 {
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+    /*text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);*/
+}
+
+sidebar .information-wrapper .badge{
+    background-color: var(--text-color-primary);
+    width: 70%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--background-secondary);
+    text-align: center;
+    margin: 5px auto;
+}
+
+
+sidebar .information-wrapper .social-links{
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+sidebar .information-wrapper .social-links .social-link {
+    display: inline-block;
+    font-size: 24px;
+    color: var(--background-secondary);
+    margin-top: 5px;
+    padding: 0 8px;
+}
+
+sidebar .information-wrapper p{
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+sidebar .information-wrapper a{
+    text-decoration: none;
+    color: var(--text-color-primary);
+}

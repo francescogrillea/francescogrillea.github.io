@@ -1,0 +1,100 @@
+@import url('colors.css');
+
+main {
+    padding: 2% 5% 2% 4%;
+    background-color: var(--background-secondary);
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1),
+    0 -5px 5px rgba(0, 0, 0, 0.1),
+    5px 0 5px rgba(0, 0, 0, 0.1),
+    -5px 0 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color-secondary);
+}
+
+li{
+    font-weight: 100;
+}
+
+/* INDEX PAGE */
+.content-container .content-title{
+    font-size: var(--text-size-primary);
+    font-weight: bold;
+    color: var(--text-color-primary);
+}
+
+.content-container .content-list {
+    font-size: var(--text-size-primary);
+    font-weight: bold;
+}
+
+
+.content-container .content-list .list-title {
+    font-weight: 500;
+}
+
+.content-container .content-list .list-subtitle {
+    font-size: 14px;
+}
+
+.content-container .content-list .list-description {
+    font-weight: 100;
+    font-size: 12px;
+    color: var(--text-color-primary)
+}
+
+
+.content-container .content-list-multicolumn {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.content-container .content-list-multicolumn .list{
+    /*text-align: center;*/
+    font-weight: 500;
+}
+.content-container .content-list-multicolumn ul{
+    text-align: left;
+    padding-left: 20px;
+}
+
+
+
+
+
+
+/* PROJECTS AND CERTIFICATION PAGE */
+
+.separation-line-h-full {
+    border: 0; /* Removes the default border of the line */
+    border-radius: 10px;
+    height: 1.5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: radial-gradient(circle, var(--text-color-primary), var(--text-color-secondary));
+    /*background: linear-gradient(to right, var(--text-color-secondary), var(--text-color-primary)); !* Gradient color *!*/
+}
+
+.project-container .project-title{
+    font-size: var(--text-size-primary);
+    font-weight: bold;
+}
+
+.project-container .project-enterprise{
+    color: var(--text-color-primary);
+    font-size: 14px;
+}
+
+.project-container .project-description{
+    font-size: 16px;
+    font-weight: 100;
+    word-wrap: break-word;  /* Break long words if necessary */
+    overflow-wrap: break-word; /* Break lines to fit within the container */
+    white-space: normal;    /* Allow text to wrap to the next line */
+}
+
+.project-container .project-link{
+    color: var(--text-color-primary);
+    padding-left: 10px;
+}
+

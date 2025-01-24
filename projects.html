@@ -1,152 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Live Resume :: Portfolio</title>
-    <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/vendors/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/live-resume.css">
+  <meta charset="UTF-8">
+  <title>Francesco Grillea :: Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!--  for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/font.css">
+  <link rel="stylesheet" href="assets/css/page-content.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
 </head>
 
 <body>
-    <header>
-        <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="assets/images/share.svg" alt="share" class="btn-img">
-            SHARE</button>
-        <nav class="collapsible-nav" id="collapsible-nav">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="resume.html" class="nav-link">RESUME</a>
-            <a href="projects.html" class="nav-link active">PORTFOLIO</a>
-            <a href="blog.html" class="nav-link">BLOG</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
-        </nav>
-        <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
-            data-target="collapsible-nav"><img src="assets/images/hamburger.svg" alt="hamburger"></button>
-    </header>
-    <div class="content-wrapper">
-        <aside>
-            <div class="profile-img-wrapper">
-                <img src="assets/images/Profile.png" alt="profile">
-            </div>
-            <h1 class="profile-name">Daisy Murphy</h1>
-            <div class="text-center">
-                <span class="badge badge-white badge-pill profile-designation">UI / UX Designer</span>
-            </div>
-            <nav class="social-links">
-                <a href="#!" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                <a href="#!" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#!" class="social-link"><i class="fab fa-behance"></i></a>
-                <a href="#!" class="social-link"><i class="fab fa-dribbble"></i></a>
-                <a href="#!" class="social-link"><i class="fab fa-github"></i></a>
-            </nav>
-            <div class="widget">
-                <h5 class="widget-title">personal information</h5>
-                <div class="widget-content">
-                    <p>BIRTHDAY : 15 April 1990</p>
-                    <p>WEBSITE : www.example.com</p>
-                    <p>PHONE : +1 123 000 4444</p>
-                    <p>MAIL : your@example.com</p>
-                    <p>Location : California, USA</p>
-                    <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="assets/images/download.svg" alt="download"
-                        class="btn-img">DOWNLOAD CV </button>
-                </div>
-            </div>
-            <div class="widget card">
-                <div class="card-body">
-                    <div class="widget-content">
-                        <h5 class="widget-title card-title">LANGUAGES</h5>
-                        <p>English : native</p>
-                        <p>Spanish : fluent</p>
-                        <p>Italian : fluent</p>
-                    </div>
-                </div>
-            </div>
-            <div class="widget card">
-                <div class="card-body">
-                    <div class="widget-content">
-                        <h5 class="widget-title card-title">INTERESTS</h5>
-                        <p>Video games</p>
-                        <p>Finance</p>
-                        <p>Basketball</p>
-                        <p>Theatre</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <main>
-            <section class="portfolio-section">
-                <h2 class="section-title">PORTFOLIO</h2>
-                
-                <div class="portfolio-wrapper">
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_1.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 01</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_2.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 02</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_3.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 03</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_4.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 04</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_5.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 05</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_6.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 06</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_7.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 07</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="portfolio-item hover-box">
-                        <img src="assets/images/img_8.png" alt="project" class="portfolio-item-img">
-                        <figcaption class="portfolio-item-details overlay">
-                            <h5 class="portfolio-item-title">PROJECT 08</h5>
-                            <p class="portfolio-item-description">Branding, Photography</p>
-                        </figcaption>
-                    </figure>
-                </div>
 
-            </section>
-            <footer>Live Resume @ <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer">BootstrapDash</a>. All Rights Reserved 2020</footer>
-        </main>
+<header>
+  <nav class="collapsible-nav" id="collapsible-nav">
+    <a href="index.html" class="nav-link">ABOUT</a>
+    <a href="projects.html" class="nav-link active">PROJECTS</a>
+    <a href="certifications.html" class="nav-link">CERTIFICATIONS</a>
+  </nav>
+</header>
+
+
+<div class="content-wrapper">
+  <div id="sidebar-container"></div>
+
+  <main>
+    <h1 class="typewriter-animation">PROJECTS</h1>
+
+    <!--    RAG -->
+    <div class="project-container">
+      <div class="project-title">
+        Retrieval-Augmented Generation (RAG) Agent
+      </div>
+      <div class="project-enterprise">
+        Data Reply
+      </div>
+      <div class="project-description">
+        Implementation from scratch of an agent based on RAG technique to assist with legal and legislative queries.
+      </div>
     </div>
-    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendors/@popperjs/core/dist/umd/popper-base.min.js"></script>
-    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/vendors/entry/jq.entry.min.js"></script>
-    <script src="assets/js/live-resume.js"></script>
-</body>
+    <hr class="separation-line-h-full">
 
+
+    <!--    Cerbero2-->
+    <div class="project-container">
+      <div class="project-title">
+        Comparing Reinforcement and Supervised Learning for tuning Large Language-specific Models
+        <a href="https://etd.adm.unipi.it/t/etd-06282024-124447" class="project-link">
+          <i class="fa-solid fa-file"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa - Master Thesis
+      </div>
+      <div class="project-description">
+        Development of an Italian LLM using a multi-stage fine-tuning process, including Direct Preference Optimization (DPO) with the aim of improving language proficiency, content, and grammar correctness.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+    <!--    Benchita-->
+    <div class="project-container">
+      <div class="project-title">
+        Benchita
+        <a href="https://github.com/galatolofederico/benchita" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa
+      </div>
+      <div class="project-description">
+        High quality few-shots benchmarks for Italian LLMs.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+    <!--    MIRCV Project -->
+    <div class="project-container">
+      <div class="project-title">
+        Search Engine Implementation
+        <a href="https://github.com/francescogrillea/SearchEngine_MIRCVProject" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa
+      </div>
+      <div class="project-description">
+        Implementation from scratch of a search engine using an inverted index structure for computing BM25 and TFIDF scores.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+
+    <!--    SpeakItalian-->
+    <div class="project-container">
+      <div class="project-title">
+        SpeakItalian
+        <a href="https://github.com/francescogrillea/SpeakItalian" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa
+      </div>
+      <div class="project-description">
+        Hand Gesture Recognition tool.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+    <!--    Heavy-Tailed VAE-->
+    <div class="project-container">
+      <div class="project-title">
+        Heavy-Tailed Variational Autoencoders
+        <a href="https://github.com/francescogrillea/HeavyTailed-VAE" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa
+      </div>
+      <div class="project-description">
+        Matlab implementation of a Variational Autoencoder using Normal, LogNormal and Inverse Gaussian distributions to learn a latent space.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+    <!--    Robotica -->
+    <div class="project-container">
+      <div class="project-title">
+        Movement formation of a swarm of Robots
+        <a href="https://github.com/francescogrillea/progettoRobotica" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa
+      </div>
+      <div class="project-description">
+        Matlab (and Simulink) implementation of a swarm of robots moving in formation towards goal position.
+      </div>
+    </div>
+    <hr class="separation-line-h-full">
+
+    <!--    Bachelor Thesis-->
+    <div class="project-container">
+      <div class="project-title">
+        Anomaly Detection on Embedded Devices
+        <a href="https://github.com/francescogrillea/AnomalyDetectionTFLite" class="project-link">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="project-enterprise">
+        Università di Pisa - Bachelor Thesis
+      </div>
+      <div class="project-description">
+        Deployment of Anomaly Detection model on NVIDIA Jetson Nano and Raspberry Pi for identifying anomalies in time-series telemetry data.
+      </div>
+    </div>
+
+  </main>
+
+
+</div>
+
+
+<script src="assets/js/load_sidebar.js"></script>
+<script src="assets/js/transitions.js"></script>
+
+</body>
 </html>

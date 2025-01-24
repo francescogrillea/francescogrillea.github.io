@@ -1,0 +1,61 @@
+@import url('colors.css');
+
+html {
+    overflow-y: scroll; /* Ensures scrollbar is always visible */
+}
+
+body {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color-primary);
+    text-align: justify;
+    background-color: var(--background-primary);
+}
+
+h1{
+    color: var(--text-color-primary);
+}
+
+.content-wrapper{
+    display: grid;
+    grid-template-columns: 20% 80%; /* Adjust column widths */
+    column-gap: 15px;
+    padding: 2% 4% 3% 3%;
+}
+
+
+.collapsible-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0px;
+    overflow: hidden;
+    padding-top: 2%;
+}
+.collapsible-nav.show {
+    width: 100%;
+}
+
+.collapsible-nav .nav-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+    text-transform: uppercase;
+    padding: 2px 0;
+    height: 24px;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.collapsible-nav .nav-link.active {
+    color: var(--text-color-primary);
+    border-bottom: 2px solid var(--text-color-primary);
+    padding-bottom: 0;
+}
+
+.collapsible-nav .nav-link:hover  {
+    color: var(--text-color-primary);
+}
