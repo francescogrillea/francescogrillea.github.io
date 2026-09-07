@@ -127,6 +127,61 @@ ul{
 }
 
 
+/* TIMELINE (experience + education, most recent first) */
+/* A vertical rail drawn as a left border on the list, with a dot per entry. */
+.content-container .content-list ul.timeline{
+    list-style: none;
+    padding-left: 1.35rem;
+    margin-left: 5px;
+    border-left: 1px solid var(--border-light);
+}
+
+.content-container .content-list .timeline-item{
+    position: relative;
+    margin-bottom: 1.4rem;
+}
+
+.content-container .content-list .timeline-item:last-child{
+    margin-bottom: 0;
+}
+
+.content-container .content-list .timeline-item::before{
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: calc(-1.35rem - 5px);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-tint);
+}
+
+/* The newest entry gets a hollow, glowing marker as the "you are here" point. */
+.content-container .content-list .timeline-item:first-child::before{
+    box-sizing: border-box;
+    top: 5px;
+    left: calc(-1.35rem - 7px);
+    width: 13px;
+    height: 13px;
+    background: var(--background-secondary);
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.content-container .content-list ul.timeline-details{
+    list-style: disc;
+    margin-top: 0.5rem;
+    padding-left: 18px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-color-secondary);
+}
+
+.content-container .content-list ul.timeline-details li{
+    margin-bottom: 0.3rem;
+}
+
 .content-container .content-list-multicolumn {
     display: flex;
     justify-content: flex-start;
@@ -159,6 +214,36 @@ ul{
     letter-spacing: normal;
     text-transform: none;
     color: var(--text-color-secondary);
+}
+
+/* Skills as clips. Inline-block pills plus text justification, so the gaps
+   stretch and every row (last one included) shares the same left/right edge. */
+.content-container .content-list-multicolumn .clip-group{
+    margin-top: 0.6rem;
+    text-align: justify;
+    text-align-last: justify;
+    line-height: 2.1;
+}
+
+.content-container .content-list-multicolumn .clip{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--text-color-secondary);
+    background: var(--glass-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-container .content-list-multicolumn .clip:hover{
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-tint);
 }
 
 
