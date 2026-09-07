@@ -60,7 +60,7 @@ h1 {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -74,7 +74,7 @@ h1 {
     width: 4px;
     height: 20px;
     border-radius: 2px;
-    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--gradient-brand);
 }
 
 .site-header .site-logo:hover {
@@ -109,7 +109,7 @@ h1 {
 
 .main-nav .nav-link.active {
     color: #FFFFFF;
-    background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-strong) 100%);
+    background: var(--gradient-brand);
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 

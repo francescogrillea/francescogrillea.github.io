@@ -39,7 +39,7 @@ sidebar .information-wrapper .badge{
     align-items: center;
     justify-content: center;
     gap: 7px;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-strong) 100%);
+    background: var(--gradient-brand);
     width: fit-content;
     padding: 6px 14px;
     border-radius: 999px;
@@ -73,7 +73,10 @@ sidebar .information-wrapper .social-links{
 sidebar .information-wrapper .social-links .social-link {
     display: inline-block;
     font-size: 24px;
-    color: var(--accent-primary);
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin-top: 8px;
     padding: 10px;
     border-radius: 50%;
@@ -81,8 +84,8 @@ sidebar .information-wrapper .social-links .social-link {
 }
 
 sidebar .information-wrapper .social-links .social-link:hover {
-    background: var(--accent-tint);
     transform: scale(1.1);
+    filter: drop-shadow(0 4px 12px var(--accent-glow));
 }
 
 sidebar .information-wrapper p{
@@ -103,10 +106,13 @@ sidebar .information-wrapper p strong{
 
 sidebar .information-wrapper a{
     text-decoration: none;
-    color: var(--accent-primary);
-    transition: color 0.2s ease;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: filter 0.2s ease;
 }
 
 sidebar .information-wrapper a:hover{
-    color: var(--accent-strong);
+    filter: brightness(1.1);
 }

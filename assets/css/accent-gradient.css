@@ -1,0 +1,50 @@
+/* Accent Gradient System
+   ─────────────────────────────────────────────────────────
+   Brand gradient: Indigo to Teal, 180° vertical
+
+   Light mode: #4F46E5 (indigo) → #0D9488 (teal)
+   Dark mode:  #818CF8 (indigo) → #2DD4BF (teal)
+
+   Defined as CSS variable: --gradient-brand
+   Automatically adapts to theme changes.
+*/
+
+/* Gradient text: for headers, logos, emphasis */
+.text-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Gradient background: for buttons, badges, highlights */
+.bg-gradient {
+    background: var(--gradient-brand);
+    color: #FFFFFF;
+}
+
+/* Gradient border: for accents, frames, separators */
+.border-gradient {
+    position: relative;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-brand);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+/* Gradient overlay: for interactive states, hover effects */
+.overlay-gradient::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-brand);
+    opacity: 0.1;
+    pointer-events: none;
+}
