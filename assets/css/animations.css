@@ -42,7 +42,7 @@
 #sidebar-container,
 main {
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .site-header {
@@ -69,7 +69,7 @@ main.is-visible {
 main > * {
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 main > *.is-visible {
@@ -80,5 +80,5 @@ main > *.is-visible {
 /* Played on the outgoing page right before navigating away. */
 body.is-leaving {
     opacity: 0;
-    transition: opacity 0.18s ease;
+    transition: opacity 0.12s ease;
 }

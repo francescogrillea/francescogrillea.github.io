@@ -2,8 +2,8 @@
    short fade-out before internal navigations, so the real-navigation reload
    between pages reads as an intentional transition instead of a stall. */
 (function () {
-    const CHILD_STAGGER_MS = 90;
-    const LEAVE_DURATION_MS = 180;
+    const CHILD_STAGGER_MS = 60;
+    const LEAVE_DURATION_MS = 120;
 
     function revealMain() {
         const main = document.querySelector("main");
@@ -12,7 +12,7 @@
         requestAnimationFrame(() => main.classList.add("is-visible"));
 
         Array.from(main.children).forEach((el, i) => {
-            setTimeout(() => el.classList.add("is-visible"), 150 + i * CHILD_STAGGER_MS);
+            setTimeout(() => el.classList.add("is-visible"), 100 + i * CHILD_STAGGER_MS);
         });
     }
 

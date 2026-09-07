@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Francesco Grillea :: 404</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sidebar.css">
+  <link rel="stylesheet" href="assets/css/font.css">
+  <link rel="stylesheet" href="assets/css/page-content.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    .error-container {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .error-code {
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin: 0;
+      line-height: 1;
+      text-shadow: 0 2px 20px var(--accent-tint);
+    }
+
+    .error-message {
+      font-size: 24px;
+      color: var(--text-color-primary);
+      margin: 1rem 0 0.5rem;
+      font-weight: 500;
+    }
+
+    .error-description {
+      color: var(--text-color-secondary);
+      font-size: 15px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .error-emoji {
+      font-size: 48px;
+      margin: 1rem 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .error-button {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: var(--accent-primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent-primary);
+    }
+
+    .error-button:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--accent-tint);
+    }
+
+    .error-button.secondary {
+      background: transparent;
+      color: var(--accent-primary);
+    }
+
+    .error-button.secondary:hover {
+      background: var(--accent-tint);
+    }
+  </style>
+
+  <script src="assets/js/theme.js"></script>
+
+</head>
+
+<body>
+
+  <header class="site-header" id="header-container"></header>
+
+  <div class="content-wrapper">
+    <div id="sidebar-container"></div>
+
+    <main>
+      <div class="error-container">
+        <div class="error-emoji">🚀</div>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Lost in Space</h2>
+        <p class="error-description">
+          Looks like you've ventured into unexplored territory.<br>
+          This page doesn't exist, but your journey doesn't have to end here!
+        </p>
+
+        <div class="error-actions">
+          <a href="index.html" class="error-button">Back Home</a>
+          <a href="projects.html" class="error-button secondary">Explore Projects</a>
+        </div>
+
+        <p style="margin-top: 3rem; font-size: 13px; color: var(--text-color-muted);">
+          If you think this is a mistake, feel free to <a href="mailto:grilleafrancesco@gmail.com" style="color: var(--accent-primary); text-decoration: none;">reach out</a>.
+        </p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="assets/js/page-transitions.js"></script>
+  <script src="assets/js/load_header.js"></script>
+  <script src="assets/js/load_sidebar.js"></script>
+
+</body>
+
+</html>
