@@ -139,3 +139,63 @@ h1{
     border-color: var(--accent-primary);
     box-shadow: var(--shadow-soft);
 }
+
+
+/* ============ RESPONSIVE ============ */
+
+/* Tablet and below: the sidebar stops being a column and becomes a card
+   above the content, keeping the same reading order. */
+@media (max-width: 900px) {
+    .content-wrapper{
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+        padding: 0 5% 8%;
+    }
+
+    /* Once stacked, the contact card would push the actual content of every
+       page below the fold, so it is kept only on About. */
+    #sidebar-container{
+        display: none;
+    }
+
+    body.page-about #sidebar-container{
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Logo and toggle share the first row, the nav gets a full-width row
+       underneath so it stays centred instead of being squeezed. */
+    .site-header{
+        grid-template-columns: 1fr auto;
+        row-gap: 12px;
+        padding: 16px 5% 8px;
+    }
+
+    .site-header .site-logo{
+        grid-row: 1;
+        grid-column: 1;
+        font-size: 15px;
+    }
+
+    .site-header .theme-toggle{
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .main-nav{
+        grid-row: 2;
+        grid-column: 1 / -1;
+    }
+
+    .main-nav .nav-link{
+        font-size: 11px;
+        padding: 7px 10px;
+        margin: 0;
+    }
+
+    /* Justified text on a narrow column opens up word gaps. */
+    body{
+        text-align: left;
+    }
+}

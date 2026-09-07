@@ -21,3 +21,14 @@
             typewriter 2s steps(80, end),
             blink-caret .1s step-end infinite;
 }
+
+/* The reveal animates width on a single unwrapped line, so on narrow screens
+   it would clip the heading. Let the text wrap and drop the effect instead. */
+@media (max-width: 600px) {
+    .typewriter-animation {
+        overflow: visible;
+        white-space: normal;
+        border-right: 0;
+        animation: none;
+    }
+}
