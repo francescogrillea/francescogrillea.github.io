@@ -127,6 +127,88 @@ ul{
 }
 
 
+/* Extra breathing room between the about paragraph and "What I Do",
+   without touching any other section spacing. */
+body.page-about main > p {
+    margin-bottom: 3.5rem;
+}
+
+/* WHAT I DO: grid of compact skill boxes */
+.whatido-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+}
+
+.whatido-box {
+    background: var(--glass-panel);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatido-box:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-tint);
+}
+
+.whatido-box .whatido-title {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text-color-primary);
+}
+
+.whatido-box .whatido-description {
+    margin-top: 0.2rem;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-color-secondary);
+}
+
+/* SKILLS: pure logo grid, "tools I've used" style — evenly spaced, no labels */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.75rem;
+    padding: 1rem 0.5rem;
+}
+
+.skills-grid .skill-icon {
+    font-size: 2.75rem;
+    line-height: 1;
+    color: var(--text-color-secondary);
+    filter: grayscale(1);
+    opacity: 0.75;
+    transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.skills-grid .skill-icon:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* Devicon glyphs that are plain outlines (no built-in brand color) should
+   still read in the site's palette rather than staying flat grey. */
+.skills-grid .devicon-linux-original:hover,
+.skills-grid .devicon-matlab-original:hover {
+    color: var(--accent-primary);
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        gap: 1.75rem;
+    }
+
+    .skills-grid .skill-icon {
+        font-size: 2.2rem;
+    }
+}
+
 /* TIMELINE (experience + education, most recent first) */
 /* A vertical rail drawn as a left border on the list, with a dot per entry. */
 .content-container .content-list ul.timeline{
