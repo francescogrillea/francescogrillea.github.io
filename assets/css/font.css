@@ -1,5 +1,6 @@
 :root{
     --text-size-primary: 22px;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 html {

@@ -17,6 +17,17 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Faint plotting grid behind the content: a data cue, not a texture. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
 h1{
     color: var(--text-color-primary);
 }
@@ -40,11 +51,25 @@ h1{
 }
 
 .site-header .site-logo {
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 16px;
     font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--text-color-primary);
     text-decoration: none;
     white-space: nowrap;
+}
+
+/* Accent marker: reads as a cursor / active indicator. */
+.site-header .site-logo::before {
+    content: "";
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
 }
 
 .site-header .site-logo:hover {
@@ -64,8 +89,10 @@ h1{
 }
 
 .main-nav .nav-link {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
     color: var(--text-color-secondary);
     text-transform: uppercase;
     padding: 8px 16px;
@@ -77,12 +104,12 @@ h1{
 
 .main-nav .nav-link.active {
     color: #FFFFFF;
-    background: linear-gradient(180deg, var(--accent-primary) 0%, #0051D5 100%);
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+    background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-strong) 100%);
+    box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .main-nav .nav-link:hover  {
-    background: rgba(0, 122, 255, 0.1);
+    background: var(--accent-tint);
     color: var(--accent-primary);
 }
 
@@ -109,5 +136,6 @@ h1{
 
 .site-header .theme-toggle:hover {
     color: var(--accent-primary);
+    border-color: var(--accent-primary);
     box-shadow: var(--shadow-soft);
 }

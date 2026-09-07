@@ -1,30 +1,52 @@
 :root{
-    --text-color-primary: #000000;
-    --text-color-secondary: #3C3C43;
-    --background-primary: #F2F2F7;
+    /* Slate neutrals: cooler and more editorial than plain grey. */
+    --text-color-primary: #0F172A;
+    --text-color-secondary: #475569;
+    --text-color-muted: #7C8AA0;
+    --background-primary: #F1F3F7;
     --background-secondary: #FFFFFF;
-    --accent-primary: #007AFF;
-    --border-light: #E5E5EA;
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --border-light: #E2E8F0;
 
-    --glass-surface: rgba(255, 255, 255, 0.8);
-    --glass-panel: rgba(255, 255, 255, 0.5);
-    --page-gradient: linear-gradient(135deg, #F2F2F7 0%, #F9F9FC 100%);
+    /* Indigo carries the brand, teal marks technical/secondary bits. */
+    --accent-primary: #4F46E5;
+    --accent-strong: #4338CA;
+    --accent-secondary: #0D9488;
+    --accent-tint: rgba(79, 70, 229, 0.09);
+    --accent-glow: rgba(79, 70, 229, 0.26);
+
+    --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.07);
+    --shadow-medium: 0 18px 44px rgba(15, 23, 42, 0.10);
+
+    --glass-surface: rgba(255, 255, 255, 0.82);
+    --glass-panel: rgba(255, 255, 255, 0.55);
+    --page-gradient: linear-gradient(135deg, #EDF0F6 0%, #F7F9FC 55%, #F1F4FA 100%);
+    --grid-dot: rgba(15, 23, 42, 0.055);
+
+    /* macOS window controls */
+    --window-close: #FF5F57;
+    --window-minimise: #FEBC2E;
+    --window-zoom: #28C840;
 }
 
 :root.dark-mode{
-    --text-color-primary: #FFFFFF;
-    --text-color-secondary: #EBEBF5;
-    --background-primary: #1C1C1E;
-    --background-secondary: #2C2C2E;
-    --accent-primary: #0A84FF;
-    --border-light: #3A3A3C;
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
-    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.5);
+    --text-color-primary: #E8EDF7;
+    --text-color-secondary: #A3B0C4;
+    --text-color-muted: #78879E;
+    --background-primary: #0B1120;
+    --background-secondary: #131B2E;
+    --border-light: #24304A;
 
-    --glass-surface: rgba(44, 44, 46, 0.8);
-    --glass-panel: rgba(58, 58, 60, 0.5);
-    --page-gradient: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%);
+    --accent-primary: #818CF8;
+    --accent-strong: #6366F1;
+    --accent-secondary: #2DD4BF;
+    --accent-tint: rgba(129, 140, 248, 0.14);
+    --accent-glow: rgba(129, 140, 248, 0.30);
+
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-medium: 0 18px 44px rgba(0, 0, 0, 0.55);
+
+    --glass-surface: rgba(19, 27, 46, 0.82);
+    --glass-panel: rgba(30, 41, 66, 0.55);
+    --page-gradient: linear-gradient(135deg, #080D19 0%, #101A2E 55%, #0B1220 100%);
+    --grid-dot: rgba(148, 163, 184, 0.07);
 }
-

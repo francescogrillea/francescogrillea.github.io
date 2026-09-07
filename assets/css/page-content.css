@@ -1,13 +1,49 @@
 @import url('colors.css');
 
+/* The content panel reads as an application window. */
 main {
-    padding: 2% 5% 2% 4%;
+    position: relative;
+    padding: 3.6rem 5% 2rem 4%;
     background: var(--glass-surface);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-light);
     border-radius: 20px;
     box-shadow: var(--shadow-medium);
     color: var(--text-color-secondary);
+}
+
+/* Title bar. */
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    border-bottom: 1px solid var(--border-light);
+    border-radius: 20px 20px 0 0;
+    background: var(--glass-panel);
+}
+
+/* Three window controls drawn from one dot plus two offset shadows. */
+main::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--window-close);
+    box-shadow: 18px 0 0 var(--window-minimise),
+                36px 0 0 var(--window-zoom);
+}
+
+main h1{
+    margin-top: 0.4rem;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 li{
@@ -38,16 +74,29 @@ ul{
     margin-bottom: 2rem;
 }
 
+/* Section labels: mono + accent rule, like a panel header in a dev tool. */
 .content-container .content-title{
-    font-size: var(--text-size-primary);
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--accent-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-container .content-title::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-light), transparent);
 }
 
 .content-container .content-list {
-    font-size: var(--text-size-primary);
-    font-weight: bold;
+    font-size: 1rem;
     background: var(--glass-panel);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
@@ -58,16 +107,23 @@ ul{
 
 .content-container .content-list .list-title {
     font-weight: 500;
+    font-size: 17px;
+    color: var(--text-color-primary);
 }
 
 .content-container .content-list .list-subtitle {
-    font-size: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-color-muted);
 }
 
+/* Grades / metrics: teal marks the quantitative bits. */
 .content-container .content-list .list-description {
-    font-weight: 100;
+    font-family: var(--font-mono);
+    font-weight: 500;
     font-size: 12px;
-    color: var(--text-color-primary)
+    color: var(--accent-secondary);
 }
 
 
@@ -78,8 +134,15 @@ ul{
     flex-wrap: wrap;
 }
 
+/* The category name is a bare text node, so it is styled via the wrapper
+   and the nested list resets back to body type. */
 .content-container .content-list-multicolumn .list{
-    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
     background: var(--glass-panel);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
@@ -90,6 +153,12 @@ ul{
 }
 .content-container .content-list-multicolumn ul{
     text-align: left;
+    margin-top: 0.6rem;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--text-color-secondary);
 }
 
 
@@ -100,6 +169,7 @@ ul{
 /* PROJECTS AND CERTIFICATION PAGE */
 
 .project-container {
+    position: relative;
     background: var(--glass-panel);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
@@ -109,28 +179,38 @@ ul{
     transition: all 0.3s ease;
 }
 
+/* The left edge thickens and picks up the accent on hover; the padding gives
+   back the 2px the border takes so the text does not shift. */
 .project-container:hover {
     background: var(--glass-surface);
-    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.1);
+    border-left: 3px solid var(--accent-primary);
+    padding-left: calc(1.2rem - 2px);
+    box-shadow: 0 8px 20px var(--accent-tint);
     transform: translateY(-2px);
 }
 
 .project-container .project-title{
-    font-size: var(--text-size-primary);
-    font-weight: bold;
-    color: var(--accent-primary);
-    margin-bottom: 0.5rem;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin-bottom: 0.35rem;
 }
 
 .project-container .project-enterprise{
-    color: var(--text-color-secondary);
-    font-size: 14px;
-    margin-bottom: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-color-muted);
+    font-size: 12px;
+    margin-bottom: 0.6rem;
+}
+
+.project-container .project-enterprise a{
+    color: var(--accent-secondary);
+    text-decoration: none;
 }
 
 .project-container .project-description{
-    font-size: 16px;
-    font-weight: 100;
+    font-size: 15px;
+    font-weight: 300;
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
@@ -145,7 +225,7 @@ ul{
 }
 
 .project-container .project-link:hover{
-    color: #0051D5;
+    color: var(--accent-strong);
 }
 
 .separation-line-h-full {
