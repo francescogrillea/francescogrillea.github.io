@@ -14,6 +14,25 @@ li{
     font-weight: 100;
 }
 
+ul{
+    margin: 0;
+}
+
+.content-container .content-list ul,
+.content-container .content-list-multicolumn ul{
+    padding-left: 20px;
+}
+
+.content-container .content-list li,
+.content-container .content-list-multicolumn li{
+    margin-bottom: 0.4rem;
+}
+
+.content-container .content-list li:last-child,
+.content-container .content-list-multicolumn li:last-child{
+    margin-bottom: 0;
+}
+
 /* INDEX PAGE */
 .content-container {
     margin-bottom: 2rem;
@@ -33,7 +52,7 @@ li{
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 0.9rem 1.2rem;
 }
 
 
@@ -65,13 +84,12 @@ li{
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 0.9rem 1.2rem;
     flex: 1;
     min-width: 200px;
 }
 .content-container .content-list-multicolumn ul{
     text-align: left;
-    padding-left: 20px;
 }
 
 
@@ -86,7 +104,7 @@ li{
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-light);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 0.9rem 1.2rem;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
