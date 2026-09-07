@@ -1,7 +1,30 @@
 :root{
-    --text-color-primary: #f1f6f8;
-    --text-color-secondary: #b9d4f1;
-    --background-primary: #6a759b;
-    --background-secondary: #2f3955;
+    --text-color-primary: #000000;
+    --text-color-secondary: #3C3C43;
+    --background-primary: #F2F2F7;
+    --background-secondary: #FFFFFF;
+    --accent-primary: #007AFF;
+    --border-light: #E5E5EA;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+    --glass-surface: rgba(255, 255, 255, 0.8);
+    --glass-panel: rgba(255, 255, 255, 0.5);
+    --page-gradient: linear-gradient(135deg, #F2F2F7 0%, #F9F9FC 100%);
+}
+
+:root.dark-mode{
+    --text-color-primary: #FFFFFF;
+    --text-color-secondary: #EBEBF5;
+    --background-primary: #1C1C1E;
+    --background-secondary: #2C2C2E;
+    --accent-primary: #0A84FF;
+    --border-light: #3A3A3C;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.5);
+
+    --glass-surface: rgba(44, 44, 46, 0.8);
+    --glass-panel: rgba(58, 58, 60, 0.5);
+    --page-gradient: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%);
 }
 

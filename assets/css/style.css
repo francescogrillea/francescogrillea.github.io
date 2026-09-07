@@ -12,7 +12,9 @@ body {
     line-height: 1.5;
     color: var(--text-color-primary);
     text-align: justify;
-    background-color: var(--background-primary);
+    background: var(--page-gradient);
+    background-attachment: fixed;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 h1{
@@ -27,35 +29,85 @@ h1{
 }
 
 
-.collapsible-nav {
+/* Logo left, nav centered, theme toggle right.
+   The 1fr side columns keep the nav centred on the page, not between its neighbours. */
+.site-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 4% 10px 3%;
+}
+
+.site-header .site-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color-primary);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.site-header .site-logo:hover {
+    color: var(--accent-primary);
+}
+
+.main-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 0px;
-    overflow: hidden;
-    padding-top: 2%;
-}
-.collapsible-nav.show {
-    width: 100%;
+    flex-wrap: wrap;
+    background: var(--glass-panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 6px;
 }
 
-.collapsible-nav .nav-link {
+.main-nav .nav-link {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-color-secondary);
     text-transform: uppercase;
-    padding: 2px 0;
-    height: 24px;
-    margin: 0 15px;
+    padding: 8px 16px;
+    margin: 0 2px;
     text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
 }
 
-.collapsible-nav .nav-link.active {
-    color: var(--text-color-primary);
-    border-bottom: 2px solid var(--text-color-primary);
-    padding-bottom: 0;
+.main-nav .nav-link.active {
+    color: #FFFFFF;
+    background: linear-gradient(180deg, var(--accent-primary) 0%, #0051D5 100%);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
 }
 
-.collapsible-nav .nav-link:hover  {
-    color: var(--text-color-primary);
+.main-nav .nav-link:hover  {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent-primary);
+}
+
+.main-nav .nav-link.active:hover {
+    color: #FFFFFF;
+}
+
+.site-header .theme-toggle {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    color: var(--text-color-secondary);
+    background: var(--glass-panel);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.site-header .theme-toggle:hover {
+    color: var(--accent-primary);
+    box-shadow: var(--shadow-soft);
 }

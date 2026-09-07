@@ -15,13 +15,9 @@
 
 .typewriter-animation {
     overflow: hidden;
-    border-right: .15em solid black; /* Adjust the caret color */
+    border-right: .15em solid var(--text-color-primary); /* Adjust the caret color */
     white-space: nowrap;
     animation:
             typewriter 2s steps(80, end),
             blink-caret .1s step-end infinite;
-}
-
-.collapsible-nav .nav-link {
-    transition: color 0.3s ease-in-out;
 }
