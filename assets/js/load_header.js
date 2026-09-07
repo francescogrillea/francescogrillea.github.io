@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
             header.innerHTML = data;
             markActiveLink(header);
             setupThemeToggle(header);
+            header.classList.add("is-visible");
         })
         .catch(error => console.error("Error loading header:", error));
 });

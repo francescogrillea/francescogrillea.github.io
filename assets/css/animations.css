@@ -32,3 +32,53 @@
         animation: none;
     }
 }
+
+/* ============ PAGE TRANSITIONS ============ */
+/* Every page does a real navigation (no SPA router), so the "loading" lag is
+   the browser fetching header/sidebar/theme.js again. Revealing the shell in
+   stages - box first, content after - hides that instead of fighting it. */
+
+.site-header,
+#sidebar-container,
+main {
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.site-header {
+    transform: translateY(-10px);
+}
+
+#sidebar-container {
+    transform: translateX(-10px);
+}
+
+main {
+    transform: translateY(14px) scale(0.98);
+}
+
+.site-header.is-visible,
+#sidebar-container.is-visible,
+main.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Main's direct children (title, content blocks) reveal one at a time,
+   staggered from JS, once the main box itself is visible. */
+main > * {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+main > *.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Played on the outgoing page right before navigating away. */
+body.is-leaving {
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
