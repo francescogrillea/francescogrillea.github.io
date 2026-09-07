@@ -1,0 +1,23 @@
+/* Circular reveal for theme switching, always expanding from the top-right
+   corner. Animating view-transition-new(root) (rather than old) keeps the
+   motion identical for light->dark and dark->light: it's always the
+   incoming theme that grows outward, never the outgoing one shrinking. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    animation: theme-reveal 0.6s ease forwards;
+}
+
+@keyframes theme-reveal {
+    from {
+        clip-path: circle(0% at top right);
+    }
+    to {
+        clip-path: circle(150% at top right);
+    }
+}

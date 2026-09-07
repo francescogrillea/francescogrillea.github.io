@@ -37,8 +37,17 @@ function setupThemeToggle(header) {
     syncIcon();
 
     button.addEventListener("click", () => {
-        const dark = root.classList.toggle("dark-mode");
-        localStorage.setItem("theme", dark ? "dark" : "light");
-        syncIcon();
+        const applyTheme = () => {
+            const dark = root.classList.toggle("dark-mode");
+            localStorage.setItem("theme", dark ? "dark" : "light");
+            syncIcon();
+        };
+
+        if (!document.startViewTransition) {
+            applyTheme();
+            return;
+        }
+
+        document.startViewTransition(applyTheme);
     });
 }
