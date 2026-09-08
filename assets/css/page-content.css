@@ -36,10 +36,10 @@ main::after {
     border-radius: 50%;
     background: var(--window-close);
     box-shadow: 18px 0 0 var(--window-minimise),
-                36px 0 0 var(--window-zoom);
+        36px 0 0 var(--window-zoom);
 }
 
-main h1{
+main h1 {
     margin-top: 0.4rem;
     font-size: 30px;
     font-weight: 700;
@@ -50,26 +50,26 @@ main h1{
     color: transparent;
 }
 
-li{
+li {
     font-weight: 100;
 }
 
-ul{
+ul {
     margin: 0;
 }
 
 .content-container .content-list ul,
-.content-container .content-list-multicolumn ul{
+.content-container .content-list-multicolumn ul {
     padding-left: 20px;
 }
 
 .content-container .content-list li,
-.content-container .content-list-multicolumn li{
+.content-container .content-list-multicolumn li {
     margin-bottom: 0.4rem;
 }
 
 .content-container .content-list li:last-child,
-.content-container .content-list-multicolumn li:last-child{
+.content-container .content-list-multicolumn li:last-child {
     margin-bottom: 0;
 }
 
@@ -79,7 +79,7 @@ ul{
 }
 
 /* Section labels: mono + accent rule, like a panel header in a dev tool. */
-.content-container .content-title{
+.content-container .content-title {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -95,7 +95,7 @@ ul{
     margin-bottom: 0.75rem;
 }
 
-.content-container .content-title::after{
+.content-container .content-title::after {
     content: "";
     flex: 1;
     height: 1px;
@@ -136,7 +136,7 @@ ul{
 
 /* Extra breathing room between the about paragraph and "What I Do",
    without touching any other section spacing. */
-body.page-about main > p {
+body.page-about main>p {
     margin-bottom: 3.5rem;
 }
 
@@ -218,23 +218,23 @@ body.page-about main > p {
 
 /* TIMELINE (experience + education, most recent first) */
 /* A vertical rail drawn as a left border on the list, with a dot per entry. */
-.content-container .content-list ul.timeline{
+.content-container .content-list ul.timeline {
     list-style: none;
     padding-left: 1.35rem;
     margin-left: 5px;
     border-left: 1px solid var(--border-light);
 }
 
-.content-container .content-list .timeline-item{
+.content-container .content-list .timeline-item {
     position: relative;
     margin-bottom: 1.4rem;
 }
 
-.content-container .content-list .timeline-item:last-child{
+.content-container .content-list .timeline-item:last-child {
     margin-bottom: 0;
 }
 
-.content-container .content-list .timeline-item::before{
+.content-container .content-list .timeline-item::before {
     content: "";
     position: absolute;
     top: 7px;
@@ -247,7 +247,7 @@ body.page-about main > p {
 }
 
 /* The newest entry gets a hollow, glowing marker as the "you are here" point. */
-.content-container .content-list .timeline-item:first-child::before{
+.content-container .content-list .timeline-item:first-child::before {
     box-sizing: border-box;
     top: 5px;
     left: calc(-1.35rem - 7px);
@@ -258,7 +258,7 @@ body.page-about main > p {
     box-shadow: 0 0 0 4px var(--accent-glow);
 }
 
-.content-container .content-list ul.timeline-details{
+.content-container .content-list ul.timeline-details {
     list-style: disc;
     margin-top: 0.5rem;
     padding-left: 18px;
@@ -267,7 +267,7 @@ body.page-about main > p {
     color: var(--text-color-secondary);
 }
 
-.content-container .content-list ul.timeline-details li{
+.content-container .content-list ul.timeline-details li {
     margin-bottom: 0.3rem;
 }
 
@@ -280,7 +280,7 @@ body.page-about main > p {
 
 /* The category name is a bare text node, so it is styled via the wrapper
    and the nested list resets back to body type. */
-.content-container .content-list-multicolumn .list{
+.content-container .content-list-multicolumn .list {
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 600;
@@ -295,7 +295,8 @@ body.page-about main > p {
     flex: 1;
     min-width: 200px;
 }
-.content-container .content-list-multicolumn ul{
+
+.content-container .content-list-multicolumn ul {
     text-align: left;
     margin-top: 0.6rem;
     font-family: "Ubuntu", sans-serif;
@@ -307,14 +308,14 @@ body.page-about main > p {
 
 /* Skills as clips. Inline-block pills plus text justification, so the gaps
    stretch and every row (last one included) shares the same left/right edge. */
-.content-container .content-list-multicolumn .clip-group{
+.content-container .content-list-multicolumn .clip-group {
     margin-top: 0.6rem;
     text-align: justify;
     text-align-last: justify;
     line-height: 2.1;
 }
 
-.content-container .content-list-multicolumn .clip{
+.content-container .content-list-multicolumn .clip {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 12px;
@@ -329,7 +330,7 @@ body.page-about main > p {
     transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.content-container .content-list-multicolumn .clip:hover{
+.content-container .content-list-multicolumn .clip:hover {
     color: var(--accent-primary);
     border-color: var(--accent-primary);
     box-shadow: 0 0 0 3px var(--accent-tint);
@@ -363,26 +364,26 @@ body.page-about main > p {
     transform: translateY(-2px);
 }
 
-.project-container .project-title{
+.project-container .project-title {
     font-size: 18px;
     font-weight: 600;
     color: var(--text-color-primary);
     margin-bottom: 0.35rem;
 }
 
-.project-container .project-enterprise{
+.project-container .project-enterprise {
     font-family: var(--font-mono);
     color: var(--text-color-muted);
     font-size: 12px;
     margin-bottom: 0.6rem;
 }
 
-.project-container .project-enterprise a{
+.project-container .project-enterprise a {
     color: var(--accent-secondary);
     text-decoration: none;
 }
 
-.project-container .project-description{
+.project-container .project-description {
     font-size: 15px;
     font-weight: 300;
     word-wrap: break-word;
@@ -391,14 +392,14 @@ body.page-about main > p {
     color: var(--text-color-secondary);
 }
 
-.project-container .project-link{
+.project-container .project-link {
     color: var(--accent-primary);
     padding-left: 8px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.project-container .project-link:hover{
+.project-container .project-link:hover {
     color: var(--accent-strong);
 }
 
@@ -415,37 +416,36 @@ body.page-about main > p {
 
 /* Percentage padding collapses on small screens, so switch to fixed units. */
 @media (max-width: 900px) {
-    main{
+    main {
         padding: 3.4rem 1.5rem 1.75rem;
     }
 
-    .content-container{
+    .content-container {
         margin-bottom: 1.5rem;
     }
 }
 
 @media (max-width: 600px) {
-    main{
+    main {
         padding: 3.2rem 1.1rem 1.5rem;
     }
 
-    main h1{
+    main h1 {
         font-size: 23px;
     }
 
     /* Four flexible columns become one readable stack. */
-    .content-container .content-list-multicolumn{
+    .content-container .content-list-multicolumn {
         flex-direction: column;
         gap: 10px;
     }
 
-    .content-container .content-list-multicolumn .list{
+    .content-container .content-list-multicolumn .list {
         min-width: 0;
     }
 
     .content-container .content-list .list-title,
-    .project-container .project-title{
+    .project-container .project-title {
         font-size: 16px;
     }
 }
-
