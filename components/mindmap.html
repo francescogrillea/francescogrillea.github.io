@@ -1,0 +1,339 @@
+<style id="dt-ecosystem-styles">
+    .dt-ecosystem {
+        position: relative;
+        isolation: isolate;
+        width: 100%;
+        margin: 0;
+        height: clamp(250px, 33cqw, 390px);
+        overflow: hidden;
+        color: var(--text-color-primary);
+        background: transparent;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .content-container--ecosystem>.content-title {
+        margin-bottom: 0;
+    }
+
+    .content-container--ecosystem {
+        container-type: inline-size;
+    }
+
+    .dt-ecosystem,
+    .dt-ecosystem * {
+        box-sizing: border-box;
+    }
+
+    .dt-ecosystem__viewport {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: hidden;
+        background: transparent;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-light) transparent;
+        overscroll-behavior-inline: contain;
+    }
+
+    .dt-ecosystem__viewport::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .dt-ecosystem__viewport::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: var(--border-light);
+    }
+
+    .dt-ecosystem__graph {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        height: 100%;
+        overflow: visible;
+        background: transparent;
+    }
+
+    .dt-ecosystem__base-edge {
+        display: none;
+    }
+
+    .dt-ecosystem__flow-edge {
+        fill: none;
+        stroke: url(#dt-flow-gradient);
+        stroke-width: 0.65;
+        stroke-linecap: round;
+        opacity: 0.48;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .dt-ecosystem__particle {
+        fill: var(--accent-secondary);
+        filter: url(#dt-particle-glow) drop-shadow(0 0 4px var(--accent-glow));
+        opacity: 0.78;
+    }
+
+    .dt-ecosystem__node {
+        outline: none;
+        cursor: default;
+    }
+
+    .dt-ecosystem__node-core {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .dt-ecosystem__node-circle {
+        width: 64px;
+        height: 64px;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        background:
+            linear-gradient(var(--glass-surface), var(--glass-surface)) padding-box,
+            var(--gradient-brand) border-box;
+        transition: border-color 180ms ease;
+    }
+
+    .dt-ecosystem__icon {
+        fill: none;
+        stroke: var(--text-color-primary);
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: stroke 180ms ease;
+        pointer-events: none;
+    }
+
+    .dt-ecosystem__label {
+        fill: var(--text-color-secondary);
+        font-size: 13px;
+        font-weight: 520;
+        letter-spacing: 0.01em;
+        text-anchor: middle;
+        pointer-events: none;
+        transition: fill 180ms ease;
+    }
+
+    .dt-ecosystem__node:hover .dt-ecosystem__node-core {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 11px var(--accent-glow));
+    }
+
+    .dt-ecosystem__node:hover .dt-ecosystem__node-circle {
+        border-color: var(--accent-primary);
+    }
+
+    .dt-ecosystem__node:hover .dt-ecosystem__icon {
+        stroke: var(--text-color-primary);
+    }
+
+    .dt-ecosystem__node:hover .dt-ecosystem__label {
+        fill: var(--text-color-secondary);
+    }
+
+    @media (max-width: 700px) {
+        .dt-ecosystem {
+            height: auto;
+            aspect-ratio: 1120 / 365;
+        }
+
+        .dt-ecosystem__label {
+            font-size: 13px;
+        }
+
+        .dt-ecosystem__flow-edge {
+            stroke-width: 0.75;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .dt-ecosystem__particle {
+            display: none;
+        }
+
+        .dt-ecosystem__node-core,
+        .dt-ecosystem__node-circle,
+        .dt-ecosystem__icon,
+        .dt-ecosystem__label {
+            transition: none !important;
+        }
+    }
+</style>
+
+<section class="dt-ecosystem" data-dt-ecosystem aria-label="Distributed map of technology skills and solutions">
+    <div class="dt-ecosystem__viewport">
+        <svg class="dt-ecosystem__graph" viewBox="0 35 1120 365" role="img"
+            aria-label="Network of eight interconnected technology solutions" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="dt-flow-gradient" x1="0" y1="0" x2="1120" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="var(--accent-primary)" stop-opacity="0.35" />
+                    <stop offset="0.48" stop-color="var(--accent-secondary)" stop-opacity="0.92" />
+                    <stop offset="1" stop-color="var(--accent-primary)" stop-opacity="0.5" />
+                </linearGradient>
+                <filter id="dt-particle-glow" x="-300%" y="-300%" width="700%" height="700%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <g class="dt-ecosystem__edges" aria-hidden="true">
+                <g>
+                    <path class="dt-ecosystem__flow-edge" d="M140 102 C205 92 295 80 368 82" />
+                    <path class="dt-ecosystem__flow-edge" d="M140 118 C215 145 295 220 368 237" />
+                    <path class="dt-ecosystem__flow-edge" d="M139 266 C210 220 300 120 368 89" />
+                    <path class="dt-ecosystem__flow-edge" d="M140 285 C210 295 300 260 368 251" />
+                    <path class="dt-ecosystem__flow-edge" d="M432 85 C500 90 600 135 668 145" />
+                    <path class="dt-ecosystem__flow-edge" d="M432 236 C505 210 595 175 668 175" />
+                    <path class="dt-ecosystem__flow-edge" d="M430 255 C505 280 595 305 668 305" />
+                    <path class="dt-ecosystem__flow-edge" d="M730 151 C800 125 905 98 978 107" />
+                    <path class="dt-ecosystem__flow-edge" d="M731 169 C815 190 900 250 978 258" />
+                    <path class="dt-ecosystem__flow-edge" d="M731 312 C805 295 900 275 978 278" />
+                    <path class="dt-ecosystem__flow-edge" d="M729 303 C810 250 900 155 978 121" />
+                    <path class="dt-ecosystem__flow-edge" d="M430 68 C610 42 820 50 978 93" />
+                    <path class="dt-ecosystem__flow-edge" d="M140 291 C400 360 720 370 978 288" />
+                </g>
+            </g>
+
+            <g class="dt-ecosystem__particles" aria-hidden="true">
+                <circle class="dt-ecosystem__particle" r="2.6">
+                    <animateMotion dur="5.8s" repeatCount="indefinite" path="M140 102 C205 92 295 80 368 82" />
+                </circle>
+                <circle class="dt-ecosystem__particle" r="2.3">
+                    <animateMotion dur="7.2s" begin="-2s" repeatCount="indefinite"
+                        path="M140 285 C210 295 300 260 368 251" />
+                </circle>
+                <circle class="dt-ecosystem__particle" r="2.6">
+                    <animateMotion dur="6.4s" begin="-4s" repeatCount="indefinite"
+                        path="M432 85 C500 90 600 135 668 145" />
+                </circle>
+                <circle class="dt-ecosystem__particle" r="2.4">
+                    <animateMotion dur="7.8s" begin="-1s" repeatCount="indefinite"
+                        path="M430 255 C505 280 595 305 668 305" />
+                </circle>
+                <circle class="dt-ecosystem__particle" r="2.7">
+                    <animateMotion dur="6.9s" begin="-3.5s" repeatCount="indefinite"
+                        path="M731 169 C815 190 900 250 978 258" />
+                </circle>
+                <circle class="dt-ecosystem__particle" r="2.2">
+                    <animateMotion dur="10s" begin="-5s" repeatCount="indefinite"
+                        path="M729 303 C810 250 900 155 978 121" />
+                </circle>
+            </g>
+
+            <g class="dt-ecosystem__nodes">
+                <g class="dt-ecosystem__node" transform="translate(110 110)" aria-label="Web Experiences">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <rect x="-17" y="-13" width="34" height="26" rx="3" />
+                            <path d="M-17 -6 H17 M-12 -9 h1 M-7 -9 h1 M-2 -9 h1" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Websites</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(110 280)" aria-label="Product Apps">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <rect x="-16" y="-14" width="32" height="28" rx="3" />
+                            <path d="M-16 -7 H16 M-9 0 -13 4 -9 8 M9 0 13 4 9 8 M3 -1 -3 9" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Product Apps</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(400 78)" aria-label="Data Core">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <ellipse cx="0" cy="-10" rx="15" ry="6" />
+                            <path
+                                d="M-15 -10 V10 C-15 13 -8 16 0 16 S15 13 15 10 V-10 M-15 0 C-15 3 -8 6 0 6 S15 3 15 0" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Database</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(400 245)" aria-label="Insight Engine">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <path d="M-16 14 V-13 M-16 14 H17" />
+                            <path d="m-12 8 7-8 6 4 11-14" />
+                            <circle cx="-12" cy="8" r="2" />
+                            <circle cx="-5" cy="0" r="2" />
+                            <circle cx="1" cy="4" r="2" />
+                            <circle cx="12" cy="-10" r="2" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Analytics</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(700 160)" aria-label="Workflow Automation">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <path d="M0-16v5 M0 11v5 M-16 0h5 M11 0h5 M-11-11l4 4 M7 7l4 4 M11-11 7-7 M-7 7l-4 4" />
+                            <circle cx="0" cy="0" r="9" />
+                            <circle cx="0" cy="0" r="3" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Automations</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(700 320)" aria-label="API Network">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <path d="M-9 -12 -16 0 -9 12 M9 -12 16 0 9 12 M4 -15 -4 15" />
+                            <circle cx="-8" cy="0" r="2" />
+                            <circle cx="8" cy="0" r="2" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">API Network</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(1010 100)" aria-label="Autonomous Agents">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <rect x="-14" y="-10" width="28" height="23" rx="5" />
+                            <path d="M0 -10 v-6 M-8 13 v4 M8 13 v4 M-18 -4 h4 M14 -4 h4 M-8 5 h16" />
+                            <circle cx="-6" cy="-2" r="2" />
+                            <circle cx="6" cy="-2" r="2" />
+                            <circle cx="0" cy="-17" r="2" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Autonomous Agents</text>
+                </g>
+                <g class="dt-ecosystem__node" transform="translate(1010 270)" aria-label="Conversational AI">
+                    <g class="dt-ecosystem__node-core">
+                        <foreignObject x="-32" y="-32" width="64" height="64">
+                            <div xmlns="http://www.w3.org/1999/xhtml" class="dt-ecosystem__node-circle"></div>
+                        </foreignObject>
+                        <g class="dt-ecosystem__icon">
+                            <path d="M-16 -12 h32 v22 H2 l-9 7 2-7 h-11z" />
+                            <circle cx="-8" cy="-1" r="2" />
+                            <circle cx="0" cy="-1" r="2" />
+                            <circle cx="8" cy="-1" r="2" />
+                        </g>
+                    </g>
+                    <text class="dt-ecosystem__label" y="55">Conversational AI</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+</section>
