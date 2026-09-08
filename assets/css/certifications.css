@@ -1,0 +1,380 @@
+.certs-section {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+    /* Keep horizontal padding inside the section width, so its visual centre
+       always matches the centre of the content panel. */
+    box-sizing: border-box;
+}
+
+.honeycomb-grid {
+    --hex-w: 168px;
+    --hex-h: 193px;
+    --hex-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Size to one complete row, but never exceed the available space. This
+       gives auto margins a stable, symmetric box to centre at every width. */
+    width: min(100%, calc(var(--hex-w) * 4 + var(--hex-gap) * 3));
+    margin-inline: auto;
+}
+
+.honeycomb-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: var(--hex-gap);
+    margin-bottom: calc(var(--hex-gap) - var(--hex-h) * 0.115);
+    justify-content: center;
+}
+
+.honeycomb-row.offset {
+    padding-left: calc(var(--hex-w) / 2 + var(--hex-gap) / 2);
+    justify-content: flex-start;
+}
+
+.hex-cell {
+    width: var(--hex-w);
+    flex-shrink: 0;
+    position: relative;
+    filter: drop-shadow(var(--shadow-drop));
+    transition: filter 0.4s ease;
+}
+
+/* Rounded hexagon: a clip-path polygon can't round its vertices, so the shape
+   comes from an SVG mask whose corners are quadratic curves. The viewBox keeps
+   the same 100:115 ratio as --hex-w/--hex-h, so it scales without distortion. */
+.hex-badge {
+    width: var(--hex-w);
+    height: var(--hex-h);
+    --hex-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 115' preserveAspectRatio='none'%3E%3Cpath d='M39.6 5.98 Q50 0 60.4 5.98 L89.6 22.77 Q100 28.75 100 40.75 L100 74.25 Q100 86.25 89.6 92.23 L60.4 109.02 Q50 115 39.6 109.02 L10.4 92.23 Q0 86.25 0 74.25 L0 40.75 Q0 28.75 10.4 22.77 Z' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-image: var(--hex-mask);
+    mask-image: var(--hex-mask);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    position: relative;
+    cursor: default;
+    transition: filter 0.4s ease;
+    opacity: 0;
+    animation: hex-fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background: transparent;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hex-badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-brand);
+    /* Same indigo-to-teal gradient as the "Data Scientist" sidebar badge,
+       softened so the perimeter dissolves into the page instead of reading
+       as a solid outline. */
+    opacity: 0.42;
+    filter: blur(0.8px);
+    /* Subtract a scaled copy of the hexagon so the brand gradient is only
+       painted around the perimeter. The page remains visible underneath. */
+    -webkit-mask-image: var(--hex-mask), var(--hex-mask);
+    mask-image: var(--hex-mask), var(--hex-mask);
+    -webkit-mask-size: 100% 100%, calc(100% - 16px) calc(100% - 16px);
+    mask-size: 100% 100%, calc(100% - 16px) calc(100% - 16px);
+    -webkit-mask-position: center, center;
+    mask-position: center, center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.hex-badge::after {
+    display: none;
+}
+
+/* The fade-in animation's fill-mode pins opacity and transform, so the hover
+   has to work through filter — same subtle dimming as the header logo. */
+.hex-badge:hover {
+    filter: brightness(1.06) opacity(0.88);
+}
+
+.hex-border {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    opacity: 1;
+}
+
+.hex-inner {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px 14px;
+    gap: 5px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+.badge-img-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.hex-badge:hover .badge-img-wrapper {
+    transform: scale(1.12);
+}
+
+.badge-img-wrapper img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: grayscale(0.1) brightness(0.95);
+    transition: filter 0.3s ease;
+}
+
+.badge-title {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    max-width: 130px;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.badge-subtitle {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--text-color-secondary);
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    max-width: 130px;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fade-in animation */
+@keyframes hex-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Stagger delays */
+.hex-badge[data-index="0"] {
+    animation-delay: 0ms;
+}
+
+.hex-badge[data-index="1"] {
+    animation-delay: 70ms;
+}
+
+.hex-badge[data-index="2"] {
+    animation-delay: 140ms;
+}
+
+.hex-badge[data-index="3"] {
+    animation-delay: 210ms;
+}
+
+.hex-badge[data-index="4"] {
+    animation-delay: 280ms;
+}
+
+.hex-badge[data-index="5"] {
+    animation-delay: 350ms;
+}
+
+.hex-badge[data-index="6"] {
+    animation-delay: 420ms;
+}
+
+.hex-badge[data-index="7"] {
+    animation-delay: 490ms;
+}
+
+.hex-badge[data-index="8"] {
+    animation-delay: 560ms;
+}
+
+.hex-badge[data-index="9"] {
+    animation-delay: 630ms;
+}
+
+.hex-badge[data-index="10"] {
+    animation-delay: 700ms;
+}
+
+.hex-badge[data-index="11"] {
+    animation-delay: 770ms;
+}
+
+.hex-badge[data-index="12"] {
+    animation-delay: 840ms;
+}
+
+.hex-badge[data-index="13"] {
+    animation-delay: 910ms;
+}
+
+.hex-badge[data-index="14"] {
+    animation-delay: 980ms;
+}
+
+/* Theme toggle — uses only variables from style.css */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: var(--glass-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-secondary);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+.theme-toggle .icon-moon {
+    display: block;
+}
+
+:root.dark-mode .theme-toggle .icon-sun {
+    display: block;
+}
+
+:root.dark-mode .theme-toggle .icon-moon {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .honeycomb-grid {
+        --hex-w: 134px;
+        --hex-h: 154px;
+        max-width: calc(var(--hex-w) * 2 + var(--hex-gap));
+        margin: 0 auto;
+    }
+
+    .honeycomb-row.offset {
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .badge-title {
+        font-size: 10.5px;
+        max-width: 104px;
+    }
+
+    .badge-subtitle {
+        font-size: 8.5px;
+        max-width: 104px;
+    }
+
+    .badge-img-wrapper img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .badge-img-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+
+    .certs-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .honeycomb-grid {
+        --hex-w: 116px;
+        --hex-h: 133px;
+        --hex-gap: 4px;
+        max-width: calc(var(--hex-w) * 2 + var(--hex-gap));
+    }
+
+    .honeycomb-row.offset {
+        padding-left: calc(var(--hex-w) / 2 + 2px);
+        justify-content: flex-start;
+    }
+
+    .badge-title {
+        font-size: 9.5px;
+        max-width: 88px;
+    }
+
+    .badge-subtitle {
+        font-size: 8px;
+        max-width: 88px;
+    }
+
+    .badge-img-wrapper img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .badge-img-wrapper {
+        width: 34px;
+        height: 34px;
+    }
+}
