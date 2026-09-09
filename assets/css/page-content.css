@@ -354,14 +354,29 @@ body.page-about main>p {
     transition: all 0.3s ease;
 }
 
-/* The left edge thickens and picks up the accent on hover; the padding gives
-   back the 2px the border takes so the text does not shift. */
+/* Gradient marker bar: mirrors the accent bar next to the site logo
+   (see .site-header .site-logo::before in style.css). */
+.project-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0%;
+    border-radius: 2px;
+    background: var(--gradient-brand);
+    transition: height 0.3s ease;
+}
+
 .project-container:hover {
     background: var(--glass-surface);
-    border-left: 3px solid var(--accent-primary);
-    padding-left: calc(1.2rem - 2px);
     box-shadow: 0 8px 20px var(--accent-tint);
     transform: translateY(-2px);
+}
+
+.project-container:hover::before {
+    height: 70%;
 }
 
 .project-container .project-title {
