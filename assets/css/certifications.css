@@ -1,3 +1,127 @@
+.degree-board {
+    width: min(100%, 900px);
+    margin: 0 auto 2.35rem;
+}
+
+.degree-board__heading {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.degree-board__heading > span,
+.diploma-note__caption > span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.degree-board__heading > span {
+    color: var(--accent-secondary);
+}
+
+.degree-board__heading h2 {
+    margin: 0.25rem 0 0;
+    font-family: "DM Serif Text", serif;
+    font-size: clamp(1.45rem, 2.7vw, 2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-color-primary);
+}
+
+/* A frameless arrangement that keeps the diploma sheets visually in focus. */
+.degree-board__surface {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 4vw, 42px);
+    padding: 20px clamp(26px, 5vw, 48px) clamp(26px, 5vw, 48px);
+}
+
+.diploma-note {
+    padding: 11px 11px 16px;
+    border-radius: 3px;
+    background: #faf7ef;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+:root.dark-mode .diploma-note {
+    background: #ece7da;
+}
+
+.diploma-note--master {
+    transform: rotate(-1.8deg);
+}
+
+.diploma-note--bachelor {
+    transform: rotate(1.8deg);
+}
+
+.diploma-note:hover {
+    transform: rotate(0) translateY(-4px);
+    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.22);
+}
+
+.pushpin {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    box-shadow: 0 2px 5px rgba(15, 23, 42, 0.28);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.diploma-upload__image {
+    aspect-ratio: 1.414 / 1;
+    display: grid;
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: #f3eee3;
+}
+
+.diploma-upload__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.diploma-note__caption {
+    padding: 14px 5px 0;
+    color: #202938;
+}
+
+.diploma-note__caption > span {
+    color: #50726e;
+}
+
+.diploma-note__caption h3 {
+    margin: 5px 0 0;
+    font-family: "DM Serif Text", serif;
+    font-size: clamp(1rem, 1.8vw, 1.24rem);
+    font-weight: 400;
+    line-height: 1.18;
+}
+
+.diploma-note__caption p {
+    margin: 9px 0 0;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
 .certs-section {
     width: 100%;
     max-width: 1080px;
@@ -342,6 +466,23 @@
     .certs-section {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .degree-board {
+        margin-bottom: 2rem;
+    }
+
+    .degree-board__surface {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px 24px 32px;
+    }
+
+    .diploma-note--master,
+    .diploma-note--bachelor {
+        transform: none;
     }
 }
 
