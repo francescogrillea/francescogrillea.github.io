@@ -384,7 +384,68 @@ body.page-about main>p {
     font-size: 18px;
     font-weight: 600;
     color: var(--text-color-primary);
+    min-width: 0;
+}
+
+.project-container .project-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     margin-bottom: 0.35rem;
+}
+
+.project-container .project-technologies {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color-secondary);
+}
+
+.project-container .project-technologies i,
+.project-container .project-technologies img {
+    flex: 0 0 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.project-container .project-technologies i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-color-secondary);
+}
+
+/* Some Devicon glyphs occupy less of their em square than the other logos.
+   Compensate their optical size while retaining a consistent icon box. */
+.project-container .project-technologies .devicon-mongodb-plain::before {
+    display: inline-block;
+    transform: scale(1.2);
+}
+
+.project-container .project-technologies .devicon-googlecloud-plain::before {
+    display: inline-block;
+    transform: scale(1.12);
+}
+
+.project-container .project-technologies img {
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0) saturate(100%) invert(31%) sepia(14%) saturate(1247%) hue-rotate(176deg) brightness(91%) contrast(88%);
+}
+
+:root.dark-mode .project-container .project-technologies img {
+    filter: grayscale(1) brightness(0) saturate(100%) invert(75%) sepia(16%) saturate(451%) hue-rotate(177deg) brightness(85%) contrast(87%);
+}
+
+.project-container .project-technologies i:hover,
+.project-container .project-technologies img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .project-container .project-enterprise {
@@ -470,5 +531,29 @@ body.page-about main>p {
     .content-container .content-list .list-title,
     .project-container .project-title {
         font-size: 16px;
+    }
+
+    .project-container .project-heading {
+        gap: 0.6rem;
+    }
+
+    .project-container .project-technologies {
+        gap: 0.4rem;
+    }
+
+    .project-container .project-technologies i,
+    .project-container .project-technologies img {
+        flex-basis: 1.1rem;
+        font-size: 1.1rem;
+    }
+
+    .project-container .project-technologies i {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .project-container .project-technologies img {
+        width: 1.1rem;
+        height: 1.1rem;
     }
 }
