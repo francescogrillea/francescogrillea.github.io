@@ -270,11 +270,17 @@
 }
 
 .badge-img-wrapper img {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     filter: grayscale(0.1) brightness(0.95);
     transition: filter 0.3s ease;
+}
+
+.badge-img-wrapper i {
+    font-size: 24px;
+    line-height: 1;
+    color: var(--text-color-primary);
 }
 
 .badge-title {
@@ -458,6 +464,10 @@
         height: 24px;
     }
 
+    .badge-img-wrapper i {
+        font-size: 24px;
+    }
+
     .badge-img-wrapper {
         width: 40px;
         height: 40px;
@@ -512,6 +522,10 @@
     .badge-img-wrapper img {
         width: 20px;
         height: 20px;
+    }
+
+    .badge-img-wrapper i {
+        font-size: 20px;
     }
 
     .badge-img-wrapper {
