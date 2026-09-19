@@ -206,6 +206,149 @@ body.page-about main>p {
     color: var(--accent-primary);
 }
 
+/* HUMAN SIDE OF TECH: a constellation rather than a conventional skills list.
+   Each point is a way of creating momentum with other people. */
+.human-skills-section {
+    margin-top: 0.35rem;
+}
+
+.human-skills-intro {
+    max-width: 43rem;
+    margin: -0.1rem 0 1.15rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-color-secondary);
+}
+
+.human-constellation {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(4.25rem, auto));
+    align-items: center;
+    gap: 0.45rem 1rem;
+    overflow: hidden;
+    padding: 1rem 1.25rem;
+    isolation: isolate;
+    background: var(--glass-panel);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+}
+
+.constellation-orbit {
+    position: absolute;
+    z-index: -1;
+    border: 1.5px dashed color-mix(in srgb, var(--accent-primary) 46%, var(--border-light));
+    border-radius: 50%;
+    box-shadow: inset 0 0 24px var(--accent-tint);
+    pointer-events: none;
+}
+
+.orbit-one {
+    width: 31rem;
+    height: 13rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-13deg);
+}
+
+.orbit-two {
+    width: 18rem;
+    height: 18rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(24deg);
+    border-color: color-mix(in srgb, var(--accent-secondary) 52%, var(--border-light));
+}
+
+.human-skill {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-self: center;
+    gap: 0.5rem;
+    padding: 0.48rem 0.7rem 0.48rem 0.48rem;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--background-secondary) 76%, transparent);
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.06);
+    color: var(--text-color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.human-skill:hover {
+    z-index: 2;
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 18px var(--accent-tint);
+}
+
+.skill-symbol {
+    display: grid;
+    width: 1.65rem;
+    height: 1.65rem;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--accent-tint);
+    color: transparent;
+    font-size: 0.72rem;
+}
+
+/* Font Awesome glyphs live in a pseudo-element, so the gradient is applied
+   there rather than colouring the circular icon holder with a flat tone. */
+.skill-symbol i::before {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.skill-speaking { grid-column: 1; grid-row: 1; }
+.skill-facilitation { grid-column: 3; grid-row: 1; }
+.skill-leadership { grid-column: 1; grid-row: 3; }
+.skill-listening { grid-column: 3; grid-row: 3; }
+.skill-mentoring { grid-column: 1; grid-row: 2; }
+.skill-dialogue { grid-column: 3; grid-row: 2; }
+
+.constellation-core {
+    z-index: 1;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    display: grid;
+    width: 7.7rem;
+    height: 7.7rem;
+    place-content: center;
+    border: 1px solid var(--accent-primary);
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    box-shadow: 0 0 0 7px var(--accent-tint), 0 10px 26px var(--accent-glow);
+    color: #fff;
+    text-align: center;
+}
+
+.core-kicker {
+    margin-bottom: 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.82;
+}
+
+.constellation-core strong {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.05;
+}
+
 @media (max-width: 600px) {
     .skills-grid {
         gap: 1.75rem;
@@ -214,6 +357,31 @@ body.page-about main>p {
     .skills-grid .skill-icon {
         font-size: 2.2rem;
     }
+
+    .human-constellation {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(4, auto);
+        gap: 0.55rem;
+        padding: 0.9rem 0.55rem;
+    }
+
+    .orbit-one { width: 23rem; height: 12rem; }
+    .orbit-two { width: 13rem; height: 17rem; }
+
+    .human-skill {
+        justify-self: center;
+        padding-right: 0.55rem;
+        font-size: 0.65rem;
+    }
+
+    .skill-speaking { grid-column: 1; grid-row: 1; }
+    .skill-facilitation { grid-column: 2; grid-row: 1; }
+    .skill-mentoring { grid-column: 1; grid-row: 2; }
+    .skill-dialogue { grid-column: 2; grid-row: 2; }
+    .constellation-core { grid-column: 1 / 3; grid-row: 3; width: 7rem; height: 7rem; }
+    .skill-leadership { grid-column: 1; grid-row: 4; }
+    .skill-listening { grid-column: 2; grid-row: 4; }
+}
 }
 
 /* TIMELINE (experience + education, most recent first) */
