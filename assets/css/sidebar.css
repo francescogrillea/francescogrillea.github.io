@@ -83,9 +83,36 @@ sidebar .information-wrapper .social-links .social-link {
     transition: all 0.3s ease;
 }
 
+sidebar .information-wrapper .social-links button.social-link {
+    appearance: none;
+    border: 0;
+    font-family: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
 sidebar .information-wrapper .social-links .social-link:hover {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 12px var(--accent-glow));
+}
+
+@media print {
+    sidebar .cv-download-button,
+    sidebar #cv-download-status {
+        display: none !important;
+    }
 }
 
 sidebar .information-wrapper p{

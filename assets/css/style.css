@@ -245,3 +245,100 @@ h1 {
         text-align: left;
     }
 }
+
+/* The direct-download PDF uses the same linear document model. These rules
+   keep the browser's own print rendering useful without opening it from the
+   Download CV action. */
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+    html,
+    body {
+        overflow: visible;
+        background: var(--background-secondary) !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    body::before,
+    .site-header,
+    .theme-toggle,
+    .cv-download-button {
+        display: none !important;
+    }
+
+    .content-wrapper {
+        display: block;
+        padding: 0;
+    }
+
+    #sidebar-container {
+        display: block !important;
+        margin-bottom: 8mm;
+    }
+
+    sidebar {
+        display: flex;
+        align-items: center;
+        gap: 8mm;
+        border-radius: 12px;
+        padding: 6mm;
+    }
+
+    sidebar .profile-img-wrapper {
+        flex: 0 0 28mm;
+    }
+
+    sidebar .profile-img-wrapper img {
+        width: 28mm;
+    }
+
+    sidebar .information-wrapper {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2mm 7mm;
+    }
+
+    sidebar .information-wrapper .profile-name,
+    sidebar .information-wrapper .badge,
+    sidebar .information-wrapper .social-links,
+    sidebar .information-wrapper p {
+        margin: 0;
+    }
+
+    main {
+        width: auto;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    main::before,
+    main::after {
+        display: none;
+    }
+
+    .content-container,
+    .content-list,
+    .timeline-item,
+    .project-container,
+    .hex-cell,
+    .diploma-note,
+    .degree-board {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .project-container:hover,
+    .whatido-box:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
