@@ -108,6 +108,11 @@ sidebar .information-wrapper .social-links .social-link:hover {
     filter: drop-shadow(0 4px 12px var(--accent-glow));
 }
 
+sidebar .information-wrapper .social-links .social-link:focus {
+    outline: none;
+    border: none;
+}
+
 @media print {
     sidebar .cv-download-button,
     sidebar #cv-download-status {

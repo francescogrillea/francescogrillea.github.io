@@ -261,6 +261,7 @@ body.page-about main>p {
 .content-container .content-list ul.timeline-details {
     list-style: disc;
     margin-top: 0.5rem;
+    margin-right: 3rem;
     padding-left: 18px;
     font-size: 14px;
     font-weight: 300;
