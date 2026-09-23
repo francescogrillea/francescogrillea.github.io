@@ -368,8 +368,8 @@ function buildDocument(model, assets) {
         ...section("Experiences", [experienceTimeline(model.experiences, palette)]),
         ...section("Certifications", certificationList(model.certifications, palette)),
         ...section("Technologies", technologyGrid(model.technologies, assets, palette)),
-        ...section("Projects", model.projects.map(item => projectCard(item, assets, palette))),
-        ...section("Research", model.research.map(item => projectCard(item, assets, palette)))
+        ...section("Projects", [projectList(model.projects, assets, palette)]),
+        ...section("Research", [projectList(model.research, assets, palette)])
     ];
 
     return {
@@ -383,7 +383,7 @@ function buildDocument(model, assets) {
         pageMargins: [PAGE_MARGIN_X, 32, PAGE_MARGIN_X, 34],
         background: () => ({ canvas: [{ type: "rect", x: 0, y: 0, w: PAGE_WIDTH, h: PAGE_HEIGHT, color: palette.page }] }),
         content,
-        defaultStyle: { font: "Ubuntu", fontSize: 9.2, lineHeight: 1.22, color: palette.secondary },
+        defaultStyle: { font: "Ubuntu", fontSize: 9.2, lineHeight: 1.22, color: palette.secondary, alignment: "justify" },
         styles: {
             name: { fontSize: 20, bold: true, color: palette.primary },
             sectionHeading: { font: "JetBrainsMono", fontSize: 13, bold: true, color: palette.accent, characterSpacing: 0.8 },
@@ -506,9 +506,16 @@ function technologyGrid(items, assets, palette) {
     }, palette, [9, 7, 9, 5])];
 }
 
-function projectCard(item, assets, palette) {
+function projectList(items, assets, palette) {
+    return {
+        ul: items.map(item => projectListItem(item, assets, palette)),
+        margin: [9, 0, 0, 0]
+    };
+}
+
+function projectListItem(item, assets, palette) {
     const icons = item.technologies.map(technology => {
-        const node = assetNode(assets[technology.icon], 13, 13);
+        const node = assetNode(assets[technology.icon], 12, 12);
         node.alt = technology.name;
         return node;
     });
@@ -516,7 +523,7 @@ function projectCard(item, assets, palette) {
         ? { text: item.title, link: item.link, decoration: "underline", color: palette.primary }
         : { text: item.title };
 
-    return card({
+    return {
         stack: [
             {
                 columns: [
@@ -525,9 +532,10 @@ function projectCard(item, assets, palette) {
                 ],
                 columnGap: 8
             },
-            { text: item.description, fontSize: 8.7, margin: [0, 4, 0, 0] }
-        ]
-    }, palette);
+            { text: item.description, fontSize: 8.7, margin: [0, 3, 0, 0] }
+        ],
+        margin: [0, 0, 0, 10]
+    };
 }
 
 function card(content, palette, padding = [9, 7, 9, 7]) {
