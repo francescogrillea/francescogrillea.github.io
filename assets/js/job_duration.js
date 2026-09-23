@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".job-duration").forEach(el => {
         const start = new Date(el.dataset.start);
-        const now = new Date();
+        const end = el.dataset.end ? new Date(el.dataset.end) : new Date();
 
-        let years = now.getFullYear() - start.getFullYear();
-        let months = now.getMonth() - start.getMonth();
+        let years = end.getFullYear() - start.getFullYear();
+        let months = end.getMonth() - start.getMonth();
 
-        if (now.getDate() < start.getDate()) {
+        if (end.getDate() < start.getDate()) {
             months--;
         }
         if (months < 0) {
