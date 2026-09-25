@@ -31,6 +31,9 @@ const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
 const PAGE_MARGIN_X = 34;
 const CONTENT_WIDTH = PAGE_WIDTH - PAGE_MARGIN_X * 2;
+const SUMMARY_COLUMN_GAP = 12;
+const EXPERIENCE_COLUMN_WIDTH = 320;
+const CERTIFICATION_COLUMN_WIDTH = CONTENT_WIDTH - SUMMARY_COLUMN_GAP - EXPERIENCE_COLUMN_WIDTH;
 
 // The website rounds its outer panel by 20px and every inner card by 12px;
 // CSS pixels map to PDF points at 0.75.
@@ -350,25 +353,43 @@ function buildDocument(model, assets) {
         muted: "#7C8AA0", border: "#E2E8F0", accent: "#4F46E5", teal: "#0D9488"
     };
 
-    const section = (title, body) => [
+    const section = (title, body, opts = {}) => [
         {
             columns: [
                 { text: title, style: "sectionHeading", headlineLevel: 2, width: "auto" },
-                { width: "*", canvas: [{ type: "line", x1: 0, y1: 8, x2: 380, y2: 8, lineColor: palette.border, lineWidth: 0.7 }] }
+                { width: "*", canvas: [{ type: "line", x1: 0, y1: 8, x2: opts.lineWidth ?? 380, y2: 8, lineColor: palette.border, lineWidth: 0.7 }] }
             ],
             columnGap: 10,
-            margin: [9, 13, 0, 7]
+            margin: [9, 13, 0, 7],
+            ...(opts.pageBreak ? { pageBreak: opts.pageBreak } : {})
         },
         ...body
     ];
 
     const content = [
-        profileHeader(model.profile, assets, palette),
-        ...section("About", [{ text: model.about, style: "bodyText", alignment: "justify", margin: [9, 0, 9, 0] }]),
-        ...section("Experiences", [experienceTimeline(model.experiences, palette)]),
-        ...section("Certifications", certificationList(model.certifications, palette)),
-        ...section("Technologies", technologyGrid(model.technologies, assets, palette)),
-        ...section("Projects", [projectList(model.projects, assets, palette)]),
+        // Keep the complete summary on page one, with only the middle sections side by side.
+        {
+            stack: [
+                profileHeader(model.profile, assets, palette),
+                ...section("About", [{ text: model.about, style: "bodyText", alignment: "justify", margin: [9, 0, 9, 0] }]),
+                {
+                    columns: [
+                        {
+                            stack: section("Experiences", [experienceTimeline(model.experiences, palette, EXPERIENCE_COLUMN_WIDTH)], { lineWidth: 70 }),
+                            width: EXPERIENCE_COLUMN_WIDTH
+                        },
+                        {
+                            stack: section("Certifications", certificationList(model.certifications, palette, CERTIFICATION_COLUMN_WIDTH), { lineWidth: 38 }),
+                            width: CERTIFICATION_COLUMN_WIDTH
+                        }
+                    ],
+                    columnGap: SUMMARY_COLUMN_GAP
+                },
+                ...section("Technologies", technologyGrid(model.technologies, assets, palette))
+            ],
+            unbreakable: true
+        },
+        ...section("Projects", [projectList(model.projects, assets, palette)], { pageBreak: "before" }),
         ...section("Research", [projectList(model.research, assets, palette)])
     ];
 
@@ -453,7 +474,7 @@ function profileDetail(detail, palette) {
     };
 }
 
-function experienceTimeline(items, palette) {
+function experienceTimeline(items, palette, width = CONTENT_WIDTH) {
     return card({
         stack: items.map((item, index) => ({
             columns: [
@@ -462,48 +483,45 @@ function experienceTimeline(items, palette) {
                     stack: [
                         { text: item.title, style: "cardTitle", headlineLevel: 3 },
                         { text: item.subtitle, style: "meta", margin: [0, 1, 0, item.details.length ? 4 : 0] },
-                        ...(item.details.length ? [{ ul: item.details, fontSize: 8.8, margin: [8, 0, 0, 0] }] : [])
+                        ...(item.details.length ? [{ ul: item.details, fontSize: 8.2, lineHeight: 1.05, margin: [8, 0, 0, 0] }] : [])
                     ]
                 }
             ],
             columnGap: 5,
-            margin: [0, 0, 0, index === items.length - 1 ? 0 : 12]
+            margin: [0, 0, 0, index === items.length - 1 ? 0 : 8]
         }))
-    }, palette, [12, 10, 12, 10]);
+    }, palette, [12, 10, 12, 10], width);
 }
 
-function certificationList(items, palette) {
+function certificationList(items, palette, width = CONTENT_WIDTH) {
     return [card({
         ul: items.map((item, index) => ({
-            text: formatCertification(item),
-            fontSize: 9.2,
+            text: [
+                { text: item.title, fontSize: 8.1, bold: true, color: palette.primary },
+                { text: `\n${item.subtitle}`, fontSize: 7.4, color: palette.muted }
+            ],
             margin: [0, 0, 0, index === items.length - 1 ? 0 : 8]
         })),
         lineHeight: 1.3,
         margin: [7, 0, 0, 0]
-    }, palette, [11, 9, 11, 9])];
+    }, palette, [11, 9, 11, 9], width)];
 }
 
-function formatCertification(item) {
-    const year = item.subtitle.match(/\b(?:19|20)\d{2}\b/)?.[0] || "";
-    const issuer = item.subtitle.replace(/\b(?:19|20)\d{2}\b/, "").trim();
-    return `${issuer} - ${year ? `(${year}) ` : ""}${item.title}`;
-}
-
-function technologyGrid(items, assets, palette) {
+function technologyGrid(items, assets, palette, width = CONTENT_WIDTH) {
+    const columns = width === CONTENT_WIDTH ? 8 : 4;
     return [card({
-        stack: chunk(items, 8).map(row => ({
-        columns: padColumns(row.map(item => ({
-            stack: [
-                centeredAsset(assets[item.icon], 23, 23),
-                { text: item.name, alignment: "center", fontSize: 6.8, color: palette.secondary, margin: [0, 3, 0, 0] }
-            ]
-        })), 8),
-        columnGap: 6,
-        margin: [0, 3, 0, 6],
-        unbreakable: true
+        stack: chunk(items, columns).map(row => ({
+            columns: padColumns(row.map(item => ({
+                stack: [
+                    centeredAsset(assets[item.icon], 23, 23),
+                    { text: item.name, alignment: "center", fontSize: 6.8, color: palette.secondary, margin: [0, 3, 0, 0] }
+                ]
+            })), columns),
+            columnGap: 6,
+            margin: [0, 3, 0, 6],
+            unbreakable: true
         }))
-    }, palette, [9, 7, 9, 5])];
+    }, palette, [9, 7, 9, 5], width)];
 }
 
 function projectList(items, assets, palette) {
@@ -538,22 +556,23 @@ function projectListItem(item, assets, palette) {
     };
 }
 
-function card(content, palette, padding = [9, 7, 9, 7]) {
+function card(content, palette, padding = [9, 7, 9, 7], width = CONTENT_WIDTH) {
     return roundedPanel(content, palette, {
         radius: CARD_RADIUS,
         padding,
         lineWidth: 0.7,
-        margin: [0, 0, 0, 6]
+        margin: [0, 0, 0, 6],
+        width
     });
 }
 
 // pdfmake cannot round table corners, so a panel is a bordered middle row that
 // stretches with its content, closed off by two canvas caps carrying the arcs.
-function roundedPanel(content, palette, { radius, padding, lineWidth, margin }) {
+function roundedPanel(content, palette, { radius, padding, lineWidth, margin, width = CONTENT_WIDTH }) {
     const [left, top, right, bottom] = padding;
     return {
         stack: [
-            panelCap("top", radius, lineWidth, palette),
+            panelCap("top", radius, lineWidth, palette, width),
             {
                 table: {
                     widths: ["*"],
@@ -573,7 +592,7 @@ function roundedPanel(content, palette, { radius, padding, lineWidth, margin }) 
                     paddingBottom: () => 0
                 }
             },
-            panelCap("bottom", radius, lineWidth, palette)
+            panelCap("bottom", radius, lineWidth, palette, width)
         ],
         unbreakable: true,
         margin
@@ -582,8 +601,7 @@ function roundedPanel(content, palette, { radius, padding, lineWidth, margin }) 
 
 // Arcs are sampled into polylines because pdfmake repositions canvas shapes by
 // offsetting their coordinates, which it cannot do to an SVG `path` string.
-function panelCap(edge, radius, lineWidth, palette) {
-    const width = CONTENT_WIDTH;
+function panelCap(edge, radius, lineWidth, palette, width) {
     // pdfmake positions a polyline by mutating its points, so the fill and the
     // stroke each need their own copy of the outline.
     const outline = () => edge === "top"
