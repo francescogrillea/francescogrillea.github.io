@@ -1,4 +1,4 @@
-import { Puck, type Data, type Config } from "@puckeditor/core";
+import { Puck, Button, type Data, type Config } from "@puckeditor/core";
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode } from "react";
 import { documentNames, isDocumentName, lockedPermissions, pageLabels, type DocumentName, type GlobalData, type SiteDocument } from "./content";
 import { globalConfig, pageConfig } from "./puck.config";
@@ -37,6 +37,8 @@ export default function Editor() {
   const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const baseline = useRef("");
   const latest = useRef("");
   useEffect(() => {
@@ -58,6 +60,7 @@ export default function Editor() {
         const [data, global] = await Promise.all(responses.map(response => response.json()));
         if (cancelled) return;
         baseline.current = latest.current = snapshot(data);
+        setDirty(false);
         setLoaded({ page, data, global });
       }).catch(cause => { if (!cancelled) setError(String(cause.message)); });
     return () => { cancelled = true; };
@@ -67,16 +70,29 @@ export default function Editor() {
     ? globalConfig : pageConfig(loaded.global.root.props!, loaded.page), [loaded]);
   const frame = useCallback((props: { children: ReactNode; document?: Document }) => <PreviewFrame {...props} page={page} />, [page]);
 
-  async function publish(data: Data) {
+  async function save(data: Data) {
+    if (publishing) return;
     setSaving(true); setError(""); setStatus("Salvataggio…");
     try {
       const response = await fetch(`/api/content?document=${page}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Salvataggio non riuscito.");
       baseline.current = snapshot(data);
-      setStatus(latest.current === baseline.current ? "Salvato nel progetto." : "Salvato. Restano modifiche da salvare.");
+      setDirty(latest.current !== baseline.current);
+      setStatus(latest.current === baseline.current ? "Bozza salvata. Premi Pubblica per aggiornare il sito." : "Bozza salvata. Restano modifiche da salvare.");
     } catch (cause) { setStatus(""); setError(cause instanceof Error ? cause.message : "Salvataggio non riuscito."); }
     finally { setSaving(false); }
+  }
+  async function publishSaved() {
+    if (dirty || saving || uploading || publishing) return;
+    setPublishing(true); setError(""); setStatus("Invio dei contenuti salvati…");
+    try {
+      const response = await fetch("/api/publish", { method: "POST" });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Invio non riuscito. Le bozze sono conservate.");
+      setStatus(result.submitted ? "Modifiche inviate. Il sito si aggiornerà tra qualche minuto." : "Nessuna modifica salvata da inviare.");
+    } catch (cause) { setStatus(""); setError(cause instanceof Error ? cause.message : "Invio non riuscito. Riprova."); }
+    finally { setPublishing(false); }
   }
   async function upload(event: ChangeEvent<HTMLInputElement>) {
     const input = event.currentTarget;
@@ -101,15 +117,16 @@ export default function Editor() {
     {error ? <><p role="alert">{error}</p><button onClick={() => location.reload()}>Riprova</button></> : "Caricamento contenuti…"}
   </div>;
   return <Puck key={page} config={config as Config} data={loaded.data as Data}
-    permissions={lockedPermissions} ui={{ plugin: { current: "outline" } }} headerTitle="Editor locale" headerPath={pageLabels[page]}
+    permissions={lockedPermissions} ui={{ plugin: { current: "outline" } }} headerTitle="Editor" headerPath={pageLabels[page]}
     dictionary={{ "header-publish": "Salva" }}
-    onChange={data => { latest.current = snapshot(data); if (latest.current !== baseline.current) setStatus("Modifiche non salvate."); }} onPublish={publish}
+    onChange={data => { latest.current = snapshot(data); setDirty(latest.current !== baseline.current); if (latest.current !== baseline.current) setStatus("Modifiche non salvate: salva prima di pubblicare."); }} onPublish={save}
     overrides={{ iframe: frame, headerActions: ({ children }) => <>
-      <label>Pagina <select aria-label="Pagina da modificare" disabled={saving} value={page} onChange={event => changePage(event.target.value as DocumentName)}>
+      <label>Pagina <select aria-label="Pagina da modificare" disabled={saving || publishing} value={page} onChange={event => changePage(event.target.value as DocumentName)}>
         {documentNames.map(name => <option key={name} value={name}>{pageLabels[name]}</option>)}
       </select></label>
-      <label style={{ fontSize: 12 }}>Carica immagine <input aria-label="Carica immagine" type="file" accept="image/png,image/jpeg,image/webp,image/gif" disabled={uploading} onChange={upload} style={{ width: 170 }} /></label>
-      <span role={error ? "alert" : "status"} style={{ fontSize: 12, maxWidth: 300, color: error ? "#b91c1c" : undefined }}>{error || status}</span>
-      {children}
+      <label style={{ fontSize: 12 }}>Carica immagine <input aria-label="Carica immagine" type="file" accept="image/png,image/jpeg,image/webp,image/gif" disabled={uploading || publishing} onChange={upload} style={{ width: 170 }} /></label>
+      <span role={error ? "alert" : "status"} style={{ fontSize: 12, minWidth: 180, maxWidth: 300, color: error ? "#b91c1c" : undefined }}>{error || status}</span>
+      <span inert={publishing} aria-disabled={publishing || undefined} style={{ display: "inline-flex", opacity: publishing ? 0.5 : 1 }}>{children}</span>
+      <Button variant="secondary" disabled={dirty || saving || uploading || publishing} loading={publishing} onClick={publishSaved}>Pubblica</Button>
     </> }} />;
 }

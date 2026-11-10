@@ -1,16 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { allowLocalEditor } from "../../server/local";
+import { allowEditor } from "../../server/local";
 import { listMedia, maxImageBytes, saveImage } from "../../server/media";
+import { editorApiError } from "../../server/operations";
 
 export const config = { api: { bodyParser: false } };
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (!allowLocalEditor(req, res)) return;
-  if (req.method === "GET") {
-    try { return res.json(await listMedia(typeof req.query.query === "string" ? req.query.query.slice(0, 200) : "")); }
-    catch (error) { console.error(error); return res.status(500).json({ error: "Impossibile leggere le immagini." }); }
-  }
-  if (req.method !== "POST") { res.setHeader("Allow", "GET, POST"); return res.status(405).end(); }
+  if (!allowEditor(req, res)) return;
+  if (req.method !== "GET" && req.method !== "POST") { res.setHeader("Allow", "GET, POST"); return res.status(405).end(); }
   try {
+    if (req.method === "GET") return res.json(await listMedia(typeof req.query.query === "string" ? req.query.query.slice(0, 200) : ""));
     const chunks: Buffer[] = [];
     let size = 0;
     for await (const chunk of req) {
@@ -20,8 +18,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     const filename = typeof req.headers["x-file-name"] === "string" ? decodeURIComponent(req.headers["x-file-name"]).slice(0, 500) : "image";
     return res.status(201).json(await saveImage(Buffer.concat(chunks), filename));
-  } catch (error) {
-    if (error instanceof Error && !("code" in error)) return res.status(400).json({ error: error.message });
-    console.error(error); return res.status(500).json({ error: "Caricamento non riuscito. Riprova." });
-  }
+  } catch (error) { return editorApiError(res, error, "Caricamento non riuscito. Riprova."); }
 }

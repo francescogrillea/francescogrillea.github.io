@@ -7,14 +7,19 @@ export default function config(phase) {
   return {
     pageExtensions: editor ? ["site.tsx", "editor.tsx", "editor.ts"] : ["site.tsx"],
     distDir: editor ? ".next-editor" : development ? ".next-site" : "out",
-    ...(!editor && !development ? { output: "export" } : {}),
+    ...(!development ? { output: editor ? "standalone" : "export" } : {}),
     devIndicators: false,
     agentRules: false,
     reactStrictMode: true,
-    // The export already emits these HTML files. Rewrites are only needed by next dev.
-    ...(development ? { rewrites: async () => [
-      { source: "/index.html", destination: "/" },
-      { source: "/:page(research|projects|education|404).html", destination: "/:page" },
+    ...(editor ? { redirects: async () => [{ source: "/", destination: "/edit", permanent: false }] } : {}),
+    ...((editor || development) ? { rewrites: async () => [
+      // Runtime uploads do not depend on Next's startup-only public file index.
+      ...(editor ? [{ source: "/assets/uploads/:name", destination: "/api/uploads/:name" }] : []),
+      // The static export already emits the legacy HTML paths.
+      ...(development ? [
+        { source: "/index.html", destination: "/" },
+        { source: "/:page(research|projects|education|404).html", destination: "/:page" },
+      ] : []),
     ] } : {}),
   };
 }

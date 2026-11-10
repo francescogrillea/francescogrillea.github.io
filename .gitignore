@@ -9,3 +9,7 @@
 *.tsbuildinfo
 /.next/
 /next-env.d.ts
+/.editor-data/
+/.env*
+!/.env.editor.example
+/.wrangler/

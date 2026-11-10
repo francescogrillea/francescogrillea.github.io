@@ -1,0 +1,12 @@
+node_modules
+.next*
+out
+.git
+.wrangler
+.env*
+.editor-data
+.verification
+.npm-cache
+.sites-runtime
+.idea
+*.tsbuildinfo
