@@ -1,6 +1,6 @@
 @import url('colors.css');
 
-sidebar {
+.profile-sidebar {
     display: block;
     border-radius: 20px;
     padding: 1.5rem;
@@ -11,7 +11,7 @@ sidebar {
 
 /* Stays a circle at any container width, so the stacked mobile layout
    does not blow the portrait up to full page width. */
-sidebar .profile-img-wrapper img {
+.profile-sidebar .profile-img-wrapper img {
     display: block;
     margin: 0 auto;
     width: 100%;
@@ -24,7 +24,7 @@ sidebar .profile-img-wrapper img {
     border: 2px solid var(--border-light);
 }
 
-sidebar .information-wrapper .profile-name h2 {
+.profile-sidebar .information-wrapper .profile-name h2 {
     margin-top: 15px;
     margin-bottom: 0;
     text-align: center;
@@ -34,7 +34,7 @@ sidebar .information-wrapper .profile-name h2 {
 }
 
 /* Role chip with a live status dot. */
-sidebar .information-wrapper .badge{
+.profile-sidebar .information-wrapper .badge{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +54,7 @@ sidebar .information-wrapper .badge{
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-sidebar .information-wrapper .badge::before{
+.profile-sidebar .information-wrapper .badge::before{
     content: "";
     width: 6px;
     height: 6px;
@@ -64,13 +64,13 @@ sidebar .information-wrapper .badge::before{
 }
 
 
-sidebar .information-wrapper .social-links{
+.profile-sidebar .information-wrapper .social-links{
     text-align: center;
     justify-content: center;
     margin-bottom: 25px;
 }
 
-sidebar .information-wrapper .social-links .social-link {
+.profile-sidebar .information-wrapper .social-links .social-link {
     display: inline-block;
     font-size: 24px;
     background: var(--gradient-brand);
@@ -83,24 +83,24 @@ sidebar .information-wrapper .social-links .social-link {
     transition: all 0.3s ease;
 }
 
-sidebar .information-wrapper .social-links .social-link:hover {
+.profile-sidebar .information-wrapper .social-links .social-link:hover {
     transform: scale(1.1);
     filter: drop-shadow(0 4px 12px var(--accent-glow));
 }
 
-sidebar .information-wrapper .social-links .social-link:focus {
+.profile-sidebar .information-wrapper .social-links .social-link:focus {
     outline: none;
     border: none;
 }
 
-sidebar .information-wrapper p{
+.profile-sidebar .information-wrapper p{
     font-size: 13px;
     margin-bottom: 8px;
     color: var(--text-color-secondary);
 }
 
 /* Field labels read as a spec sheet. */
-sidebar .information-wrapper p strong{
+.profile-sidebar .information-wrapper p strong{
     display: block;
     font-family: var(--font-mono);
     font-size: 10px;
@@ -109,7 +109,7 @@ sidebar .information-wrapper p strong{
     color: var(--text-color-muted);
 }
 
-sidebar .information-wrapper a{
+.profile-sidebar .information-wrapper a{
     text-decoration: none;
     background: var(--gradient-brand);
     -webkit-background-clip: text;
@@ -118,6 +118,6 @@ sidebar .information-wrapper a{
     transition: filter 0.2s ease;
 }
 
-sidebar .information-wrapper a:hover{
+.profile-sidebar .information-wrapper a:hover{
     filter: brightness(1.1);
 }

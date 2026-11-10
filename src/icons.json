@@ -1,0 +1,86 @@
+{
+  "fab fa-linkedin": {
+    "label": "LinkedIn",
+    "className": "fab fa-linkedin"
+  },
+  "fab fa-github": {
+    "label": "GitHub",
+    "className": "fab fa-github"
+  },
+  "devicon-amazonwebservices-plain-wordmark": {
+    "label": "Amazon Web Services",
+    "className": "devicon-amazonwebservices-plain-wordmark"
+  },
+  "devicon-azure-plain": {
+    "label": "Microsoft Azure",
+    "className": "devicon-azure-plain"
+  },
+  "devicon-docker-plain": {
+    "label": "Docker",
+    "className": "devicon-docker-plain"
+  },
+  "devicon-git-plain": {
+    "label": "Git",
+    "className": "devicon-git-plain"
+  },
+  "devicon-googlecloud-plain": {
+    "label": "Google Cloud Platform",
+    "className": "devicon-googlecloud-plain"
+  },
+  "devicon-hadoop-plain": {
+    "label": "Hadoop",
+    "className": "devicon-hadoop-plain"
+  },
+  "devicon-html5-plain": {
+    "label": "HTML5",
+    "className": "devicon-html5-plain"
+  },
+  "devicon-java-plain": {
+    "label": "Java",
+    "className": "devicon-java-plain"
+  },
+  "devicon-linux-plain": {
+    "label": "Linux",
+    "className": "devicon-linux-plain"
+  },
+  "devicon-matlab-plain": {
+    "label": "MATLAB",
+    "className": "devicon-matlab-plain"
+  },
+  "devicon-mongodb-plain": {
+    "label": "MongoDB",
+    "className": "devicon-mongodb-plain"
+  },
+  "devicon-mysql-original": {
+    "label": "MySQL",
+    "className": "devicon-mysql-original"
+  },
+  "devicon-neo4j-plain": {
+    "label": "Neo4j",
+    "className": "devicon-neo4j-plain"
+  },
+  "devicon-python-plain": {
+    "label": "Python",
+    "className": "devicon-python-plain"
+  },
+  "devicon-redis-plain": {
+    "label": "Redis",
+    "className": "devicon-redis-plain"
+  },
+  "devicon-javascript-plain": {
+    "label": "JavaScript",
+    "className": "devicon-javascript-plain"
+  },
+  "fa-solid fa-file": {
+    "label": "Documento",
+    "className": "fa-solid fa-file"
+  },
+  "fa-solid fa-database": {
+    "label": "Amazon Redshift",
+    "className": "fa-solid fa-database"
+  },
+  "fa-brands fa-aws": {
+    "label": "Amazon Web Services",
+    "className": "fa-brands fa-aws"
+  }
+}

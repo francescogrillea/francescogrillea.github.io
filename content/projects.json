@@ -1,0 +1,252 @@
+{
+  "root": {
+    "props": {
+      "documentTitle": "Francesco Grillea :: Projects"
+    }
+  },
+  "content": [
+    {
+      "type": "Heading",
+      "props": {
+        "id": "heading",
+        "title": "Projects"
+      }
+    },
+    {
+      "type": "Projects",
+      "props": {
+        "id": "projects",
+        "items": [
+          {
+            "title": "Guardrailing Framework for Secure LLMs (2025)",
+            "description": "End-to-end LLM governance and moderation framework designed to meet EU AI Act and GDPR compliance standards.\n          Built automated input validation and output verification pipelines to safeguard against adversarial attacks,\n          data exfiltration, and out-of-scope model responses.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-azure-plain",
+                "label": "Microsoft Azure",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-mysql-original",
+                "label": "MySQL",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "OpenAI",
+                "image": {
+                  "src": "https://cdn.jsdelivr.net/gh/gilbarbara/logos@main/logos/openai-icon.svg",
+                  "alt": "OpenAI artificial intelligence platform"
+                }
+              },
+              {
+                "icon": "image",
+                "label": "Red Hat OpenShift",
+                "image": {
+                  "src": "https://cdn.simpleicons.org/redhatopenshift",
+                  "alt": "Red Hat OpenShift container platform"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Insight Hunter Agent (2026)",
+            "description": "Autonomous AI agent for insurance analytics that processes multi-system customer data to identify key\n          drivers behind policy sales.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-amazonwebservices-plain-wordmark",
+                "label": "Amazon Web Services",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "fa-solid fa-database",
+                "label": "Amazon Redshift",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "Anthropic Claude",
+                "image": {
+                  "src": "https://cdn.simpleicons.org/anthropic",
+                  "alt": "Anthropic Claude artificial intelligence platform"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Insurance Policy Purchase Predictor (2026)",
+            "description": "Insurance machine learning model predicting customer propensity to purchase specific policies and packages\n          based on individual profile and behavioral data.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-googlecloud-plain",
+                "label": "Google Cloud Platform",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "Red Hat OpenShift",
+                "image": {
+                  "src": "https://cdn.simpleicons.org/redhatopenshift",
+                  "alt": "Red Hat OpenShift container platform"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Autonomous Credit Risk Assessment (2026)",
+            "description": "AI-driven credit risk system that automatically ingests heterogeneous financial documents and generates a\n          unified, comprehensive credit dossier to streamline risk assessment.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-mongodb-plain",
+                "label": "MongoDB",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-azure-plain",
+                "label": "Microsoft Azure",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "OpenAI",
+                "image": {
+                  "src": "https://cdn.jsdelivr.net/gh/gilbarbara/logos@main/logos/openai-icon.svg",
+                  "alt": "OpenAI artificial intelligence platform"
+                }
+              },
+              {
+                "icon": "image",
+                "label": "Red Hat OpenShift",
+                "image": {
+                  "src": "https://cdn.simpleicons.org/redhatopenshift",
+                  "alt": "Red Hat OpenShift container platform"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Ticket Incident Assistant Agent (2025)",
+            "description": "Incident management application for the banking sector that analyzes support tickets and references internal\n          FAQs and documentation to recommend incident resolutions to support operators.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-mongodb-plain",
+                "label": "MongoDB",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "devicon-amazonwebservices-plain-wordmark",
+                "label": "Amazon Web Services",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "OpenAI",
+                "image": {
+                  "src": "https://cdn.jsdelivr.net/gh/gilbarbara/logos@main/logos/openai-icon.svg",
+                  "alt": "OpenAI artificial intelligence platform"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Banking Regulatory Compliance Assistant (2024)",
+            "description": "AI-powered compliance chatbot for the banking sector that answers regulatory queries by retrieving and citing\n          verified financial rules, legal frameworks, and internal guidelines.",
+            "technologies": [
+              {
+                "icon": "devicon-python-plain",
+                "label": "Python",
+                "image": {
+                  "src": "",
+                  "alt": ""
+                }
+              },
+              {
+                "icon": "image",
+                "label": "OpenAI",
+                "image": {
+                  "src": "https://cdn.jsdelivr.net/gh/gilbarbara/logos@main/logos/openai-icon.svg",
+                  "alt": "OpenAI artificial intelligence platform"
+                }
+              },
+              {
+                "icon": "image",
+                "label": "Red Hat OpenShift",
+                "image": {
+                  "src": "https://cdn.simpleicons.org/redhatopenshift",
+                  "alt": "Red Hat OpenShift container platform"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

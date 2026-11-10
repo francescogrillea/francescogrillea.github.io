@@ -188,7 +188,7 @@ h1 {
 
 /* ============ RESPONSIVE ============ */
 
-/* Tablet and below: the sidebar stops being a column and becomes a card
+/* Tablet and below: the .profile-sidebar stops being a column and becomes a card
    above the content, keeping the same reading order. */
 @media (max-width: 900px) {
     .content-wrapper {
@@ -277,7 +277,7 @@ h1 {
         margin-bottom: 8mm;
     }
 
-    sidebar {
+    .profile-sidebar {
         display: flex;
         align-items: center;
         gap: 8mm;
@@ -285,15 +285,15 @@ h1 {
         padding: 6mm;
     }
 
-    sidebar .profile-img-wrapper {
+    .profile-sidebar .profile-img-wrapper {
         flex: 0 0 28mm;
     }
 
-    sidebar .profile-img-wrapper img {
+    .profile-sidebar .profile-img-wrapper img {
         width: 28mm;
     }
 
-    sidebar .information-wrapper {
+    .profile-sidebar .information-wrapper {
         display: flex;
         flex: 1;
         align-items: center;
@@ -301,10 +301,10 @@ h1 {
         gap: 2mm 7mm;
     }
 
-    sidebar .information-wrapper .profile-name,
-    sidebar .information-wrapper .badge,
-    sidebar .information-wrapper .social-links,
-    sidebar .information-wrapper p {
+    .profile-sidebar .information-wrapper .profile-name,
+    .profile-sidebar .information-wrapper .badge,
+    .profile-sidebar .information-wrapper .social-links,
+    .profile-sidebar .information-wrapper p {
         margin: 0;
     }
 
