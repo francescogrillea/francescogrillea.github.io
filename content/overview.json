@@ -71,6 +71,14 @@
             }
           },
           {
+            "icon": "devicon-azure-plain",
+            "label": "Azure",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
             "icon": "devicon-docker-plain",
             "label": "Docker",
             "image": {
@@ -81,14 +89,6 @@
           {
             "icon": "devicon-git-plain",
             "label": "Git",
-            "image": {
-              "src": "",
-              "alt": ""
-            }
-          },
-          {
-            "icon": "devicon-azure-plain",
-            "label": "Azure",
             "image": {
               "src": "",
               "alt": ""
