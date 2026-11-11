@@ -1,3 +1,27 @@
+@font-face {
+    font-family: "Ubuntu";
+    src: url("/assets/fonts/ubuntu-v21-latin/ubuntu-v21-latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("/assets/fonts/jetbrains-mono-v24-latin/jetbrains-mono-v24-latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Serif Text";
+    src: url("/assets/fonts/dm-serif-text-v13-latin/dm-serif-text-v13-latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root{
     --text-size-primary: 22px;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
