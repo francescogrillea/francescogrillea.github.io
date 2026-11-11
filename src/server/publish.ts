@@ -88,7 +88,7 @@ export async function publishSnapshot(snapshot: PublicationSnapshot, target: Pub
     await git(["add", "--", ...files], repository, target);
     const { different } = await git(["diff", "--cached", "--quiet"], repository, target, true);
     if (!different) return { submitted: false, commit: (await git(["rev-parse", "HEAD"], repository, target)).stdout };
-    await git(["-c", "user.name=Portfolio Editor", "-c", "user.email=portfolio-editor@users.noreply.github.com", "commit", "-m", "Publish saved portfolio content"], repository, target);
+    await git(["-c", "user.name=Editor", "-c", "user.email=editor@users.noreply.github.com", "commit", "-m", "auto: manual content update"], repository, target);
     const commit = (await git(["rev-parse", "HEAD"], repository, target)).stdout;
     await git(["push", "origin", `HEAD:refs/heads/${target.branch}`], repository, target);
     return { submitted: true, commit };
