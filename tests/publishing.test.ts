@@ -167,7 +167,7 @@ test("production origin accepts the configured HTTPS host and rejects other orig
   try {
     assert.deepEqual(check({ host: "editor.example.com", origin: "https://editor.example.com" }), { allowed: true, status: 200 });
     assert.deepEqual(check({ host: "editor.example.com", origin: "https://other.example.com" }), { allowed: false, status: 403 });
-    assert.deepEqual(check({ host: "127.0.0.1:3001" }), { allowed: false, status: 404 });
+    assert.deepEqual(check({ host: "127.0.0.1:12011" }), { allowed: false, status: 404 });
     process.env.PORTFOLIO_MODE = "site";
     assert.deepEqual(check({ host: "editor.example.com" }), { allowed: false, status: 404 });
   } finally {

@@ -8,14 +8,14 @@ services:
     environment:
       PORTFOLIO_MODE: editor
       EDITOR_DATA_DIR: /data
-      PORT: "3001"
+      PORT: "12011"
       HOSTNAME: 0.0.0.0
     ports:
-      - "127.0.0.1:3001:3001"
+      - "127.0.0.1:12011:12011"
     volumes:
       - editor-data:/data
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/edit').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:12011/edit').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
       timeout: 5s
       start_period: 30s

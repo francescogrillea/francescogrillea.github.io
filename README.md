@@ -78,15 +78,15 @@ Avviare:
 docker compose up -d --build
 ```
 
-Il container usa l’output Next.js `standalone`, Git standard e un utente non root. Compose espone `127.0.0.1:3001`, da collegare al proxy HTTPS esistente. Aprendo la radice del dominio si viene indirizzati a `/edit`.
+Il container usa l’output Next.js `standalone`, Git standard e un utente non root. Compose espone `127.0.0.1:12011`, da collegare al proxy HTTPS esistente. Aprendo la radice del dominio si viene indirizzati a `/edit`.
 
-Se il proxy è un container, collegarlo all’editor attraverso la rete Docker già usata dal proxy e puntarlo a `editor:3001`; la porta di loopback pubblicata serve invece ai proxy eseguiti sul sistema host. Non aggiungere un secondo proxy al progetto.
+Se il proxy è un container, collegarlo all’editor attraverso la rete Docker già usata dal proxy e puntarlo a `editor:12011`; la porta di loopback pubblicata serve invece ai proxy eseguiti sul sistema host. Non aggiungere un secondo proxy al progetto.
 
 Per i proxy che richiedono impostazioni esplicite, consentire richieste fino a 12 MB e un timeout di lettura di 180 secondi per l’invio Git. Per esempio, con Nginx:
 
 ```nginx
 location / {
-    proxy_pass http://127.0.0.1:3001;
+    proxy_pass http://127.0.0.1:12011;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto $scheme;
     client_max_body_size 12m;
@@ -129,11 +129,11 @@ Sito: http://127.0.0.1:3000
 npm run dev:editor
 ```
 
-Editor: http://127.0.0.1:3001/edit
+Editor: http://127.0.0.1:12011/edit
 
 In PowerShell con `npm.ps1` bloccato usare `npm.cmd`. In locale le bozze sono in `.editor-data/`, ignorata da Git. Anche in sviluppo Salva non cambia più `content/`: il sito legge la versione pubblicata presente nel checkout. Dopo una pubblicazione remota, `git pull` aggiorna questa versione locale.
 
-`.env.editor` è letto da Docker Compose. Per abilitare Pubblica nel processo di sviluppo, impostare le variabili nel suo ambiente o in `.env.local`; mantenere l’origine locale, per esempio `EDITOR_ORIGIN=http://127.0.0.1:3001`. Senza credenziali si possono comunque modificare e salvare bozze: Pubblica segnala la configurazione mancante.
+`.env.editor` è letto da Docker Compose. Per abilitare Pubblica nel processo di sviluppo, impostare le variabili nel suo ambiente o in `.env.local`; mantenere l’origine locale, per esempio `EDITOR_ORIGIN=http://127.0.0.1:12011`. Senza credenziali si possono comunque modificare e salvare bozze: Pubblica segnala la configurazione mancante.
 
 `EDITOR_DATA_DIR` permette di scegliere un’altra cartella per le bozze; nel container Compose è `/data`. Font e alcuni loghi restano sulle risorse esterne già usate dal sito: hosting locale non significa funzionamento offline.
 
