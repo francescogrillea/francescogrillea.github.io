@@ -135,7 +135,7 @@ In PowerShell con `npm.ps1` bloccato usare `npm.cmd`. In locale le bozze sono in
 
 `.env.editor` è letto da Docker Compose. Per abilitare Pubblica nel processo di sviluppo, impostare le variabili nel suo ambiente o in `.env.local`; mantenere l’origine locale, per esempio `EDITOR_ORIGIN=http://127.0.0.1:12011`. Senza credenziali si possono comunque modificare e salvare bozze: Pubblica segnala la configurazione mancante.
 
-`EDITOR_DATA_DIR` permette di scegliere un’altra cartella per le bozze; nel container Compose è `/data`. Font e alcuni loghi restano sulle risorse esterne già usate dal sito: hosting locale non significa funzionamento offline.
+`EDITOR_DATA_DIR` permette di scegliere un’altra cartella per le bozze; nel container Compose è `/data`. I font di testo sono serviti da `public/assets/fonts/` tramite il CSS condiviso fra sito e anteprima editor, senza richieste a Google Fonts. Sono disponibili le varianti regular (peso 400): il browser simula gli altri pesi e il corsivo. Font Awesome, Devicon e alcuni loghi restano su risorse esterne: hosting locale non significa funzionamento offline.
 
 ## Struttura del codice
 
