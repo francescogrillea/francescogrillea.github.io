@@ -13,7 +13,6 @@ export const navigation = [
   { key: "overview", href: "/index.html" }, { key: "research", href: "/research.html" },
   { key: "projects", href: "/projects.html" }, { key: "education", href: "/education.html" },
 ] as const;
-export const lockedPermissions = { edit: true, insert: false, delete: false, duplicate: false, drag: false };
 
 const text = z.string().max(30000);
 // Content is rendered as React text, never as HTML. Only explicit link schemes are accepted.
@@ -65,15 +64,6 @@ export type PageData = Data<Blocks, PageRoot>;
 export type GlobalData = Data<{}, GlobalContent>;
 export type SiteDocument = PageData | GlobalData;
 
-// This is also the allowlist for saved structure. Only list contents may change.
-export const layouts: Record<PageName, readonly (readonly [keyof Blocks, string])[]> = {
-  overview: [["Intro", "intro"], ["Timeline", "experience"], ["Technologies", "technologies"]],
-  research: [["Heading", "heading"], ["Research", "research"]],
-  projects: [["Heading", "heading"], ["Projects", "projects"]],
-  education: [["Heading", "heading"], ["Education", "education"]],
-  "not-found": [["ErrorPage", "error"]],
-};
-
 export function isDocumentName(value: unknown): value is DocumentName {
   return typeof value === "string" && documentNames.includes(value as DocumentName);
 }
@@ -89,12 +79,13 @@ export function validateDocument(name: DocumentName, value: unknown): SiteDocume
     globalSchema.parse(envelope.root.props);
   } else {
     z.object({ documentTitle: text }).strict().parse(envelope.root.props);
-    const layout = layouts[name];
-    if (envelope.content.length !== layout.length) throw new Error("Le sezioni della pagina sono fisse.");
-    envelope.content.forEach((block, index) => {
-      const [type, id] = layout[index];
-      if (block.type !== type || block.props.id !== id) throw new Error("Non è possibile cambiare o riordinare le sezioni.");
-      const { id: _, ...props } = block.props;
+    const ids = new Set<string>();
+    envelope.content.forEach(block => {
+      const type = z.enum(Object.keys(blockSchemas) as [keyof Blocks, ...(keyof Blocks)[]]).parse(block.type);
+      const { id, ...props } = block.props;
+      const identifier = z.string().min(1).refine(value => value.trim() === value && !ids.has(value),
+        "Gli identificatori delle sezioni devono essere univoci e senza spazi esterni.").parse(id);
+      ids.add(identifier);
       blockSchemas[type].parse(props);
     });
   }

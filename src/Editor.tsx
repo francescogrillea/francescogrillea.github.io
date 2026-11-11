@@ -1,6 +1,6 @@
 import { Puck, Button, createUsePuck, type Data, type Config } from "@puckeditor/core";
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode } from "react";
-import { documentNames, isDocumentName, lockedPermissions, pageLabels, type DocumentName, type GlobalData, type SiteDocument } from "./content";
+import { documentNames, isDocumentName, pageLabels, type DocumentName, type GlobalData, type SiteDocument } from "./content";
 import { globalConfig, pageConfig } from "./puck.config";
 import { initializeTheme, stylesheetUrls } from "./resources";
 
@@ -18,7 +18,7 @@ function PreviewFrame({ children, document: doc, page }: { children: ReactNode; 
     // Mirror the original direct-child paragraph spacing inside that wrapper.
     const spacing = doc.createElement("style");
     // Puck may mount its wrapper after the site's staggered reveal effect has run.
-    spacing.textContent = 'main > * { opacity: 1; transform: none; } body.page-about main [data-puck-component="intro"] p { margin-bottom: 3.5rem; }';
+    spacing.textContent = 'main > * { opacity: 1; transform: none; } body.page-about main .intro-description { margin-bottom: 3.5rem; }';
     doc.head.appendChild(spacing);
     const disableNavigation = (event: MouseEvent) => {
       if ((event.target as Element).closest?.("a")) event.preventDefault();
@@ -161,7 +161,7 @@ export default function Editor() {
   return <EditorActionsContext.Provider value={{ page, saving, publishing, uploading, dirty, error, status, changePage, upload, save, publishSaved }}>
     <Puck key={page} config={config as Config} data={loaded.data as Data}
     iframe={{ syncHostStyles: false }}
-    permissions={lockedPermissions} ui={{ plugin: { current: "outline" } }} headerTitle="Editor" headerPath={pageLabels[page]}
+    headerTitle="Editor" headerPath={pageLabels[page]}
     dictionary={{ "header-publish": "Salva" }}
     onChange={data => { latest.current = snapshot(data); setDirty(latest.current !== baseline.current); }} onPublish={save}
     overrides={{ iframe: frame, headerActions: EditorActions }} />

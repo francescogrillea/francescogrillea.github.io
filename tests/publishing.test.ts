@@ -62,6 +62,8 @@ test("snapshot includes all saved pages and only referenced uploads", async () =
   await writeDocument("global", draft);
   const research = await readDocument("research") as PageData;
   (research.content[0].props as { title: string }).title = "Saved research draft";
+  research.content.reverse();
+  research.content.push({ type: "Heading", props: { id: "Heading-new-puck-id", title: "New section" } });
   await writeDocument("research", research);
   assert.deepEqual(await readUpload(path.basename(referenced.src)), image);
   assert.ok((await listMedia("referenced")).some(item => item.src === referenced.src));

@@ -78,7 +78,7 @@ export function SiteShell({ value, page, children }: { value: GlobalContent; pag
 }
 
 export function Heading({ title }: Blocks["Heading"]) { return <h1 className="typewriter-animation">{title}</h1>; }
-export function Intro({ title, description }: Blocks["Intro"]) { return <><Heading title={title} /><p>{description}</p></>; }
+export function Intro({ title, description }: Blocks["Intro"]) { return <><Heading title={title} /><p className="intro-description">{description}</p></>; }
 
 export function durationText(startValue: string, endValue: string, now = new Date()) {
   if (!startValue) return "";
@@ -132,7 +132,7 @@ export function Education({ degrees, certificationsTitle, certifications }: Bloc
         <div className="diploma-note__caption"><span>{degree.institution}</span><h3>{degree.title}</h3>{degree.grade && <p>{degree.grade}</p>}</div>
       </article>)}
     </div></section>
-    <div className="content-title">{certificationsTitle}</div><section className="certs-section"><div className="honeycomb-grid" id="honeycomb">
+    <div className="content-title">{certificationsTitle}</div><section className="certs-section"><div className="honeycomb-grid">
       <div className="honeycomb-row">{certifications.map((cert, index) => <div className="hex-cell" key={index}>
         <div className="hex-badge" style={{ animationDelay: `${([0, 3, 1, 2][index] ?? index) * 70}ms` } as CSSProperties}><div className="hex-border"><div className="hex-inner">
           <div className="badge-img-wrapper"><Icon value={cert.icon} /></div><div className="badge-title">{cert.title}</div>

@@ -3,14 +3,17 @@ import { test } from "node:test";
 import { readFile } from "node:fs/promises";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { documentNames, validateDocument, type PageData } from "../src/content";
+import { Render } from "@puckeditor/core/rsc";
+import { documentNames, validateDocument } from "../src/content";
+import { pageConfig, globalConfig } from "../src/puck.config";
+import { stylesheetUrls } from "../src/resources";
 import { Intro, durationText } from "../src/components";
 
 async function document(name: string): Promise<any> {
   return JSON.parse(await readFile(new URL(`../content/${name}.json`, import.meta.url), "utf8"));
 }
 
-test("all migrated documents validate with their fixed page structure", async () => {
+test("all existing documents remain valid without migration", async () => {
   for (const name of documentNames) validateDocument(name, await document(name));
 });
 
@@ -28,18 +31,63 @@ test("adding, editing, removing and reordering nested list entries is allowed", 
   validateDocument("overview", data);
 });
 
-test("section removal, reordering, new blocks and injected layout props are rejected", async () => {
+test("sections can be removed, reordered, inserted and duplicated on every page", async () => {
+  const global = (await document("global")).root.props;
+  for (const name of documentNames) {
+    if (name === "global") continue;
+    const data = await document(name);
+    const config = pageConfig(global, name);
+    assert.equal(config.categories, undefined);
+    data.content = Object.entries(config.components).map(([type, component]) => {
+      assert.equal(component.permissions, undefined);
+      return { type, props: { ...structuredClone(component.defaultProps), id: `${type}-generated-id` } };
+    });
+    assert.equal(data.content.length, 8);
+    validateDocument(name, data);
+    assert.ok(renderToStaticMarkup(createElement(Render, { config, data })).includes("Nuovo titolo"));
+    const duplicates = structuredClone(data.content);
+    for (const block of duplicates) block.props.id += "-duplicate";
+    data.content.push(...duplicates);
+    validateDocument(name, data);
+    const html = renderToStaticMarkup(createElement(Render, { config, data }));
+    const htmlIds = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+    assert.equal(new Set(htmlIds).size, htmlIds.length, "Duplicated components must not repeat HTML identifiers");
+    data.content.reverse();
+    data.content.splice(1, 1);
+    validateDocument(name, data);
+    data.content = [];
+    validateDocument(name, data);
+    assert.ok(renderToStaticMarkup(createElement(Render, { config, data })).includes("<main"));
+  }
+  assert.deepEqual(globalConfig.components, {});
+});
+
+test("unknown components, invalid identifiers, injected props and unsupported zones are rejected", async () => {
   const original = await document("overview");
-  const removed = structuredClone(original); removed.content.pop();
-  assert.throws(() => validateDocument("overview", removed));
-  const reordered = structuredClone(original); reordered.content.reverse();
-  assert.throws(() => validateDocument("overview", reordered));
-  const extra = structuredClone(original); extra.content.push({ type: "Heading", props: { id: "other", title: "Other" } });
-  assert.throws(() => validateDocument("overview", extra));
+  for (const type of ["Unknown", "constructor", "__proto__"]) {
+    const unknown = structuredClone(original); unknown.content[0].type = type;
+    assert.throws(() => validateDocument("overview", unknown));
+  }
+  for (const id of [undefined, "", "   ", original.content[1].props.id]) {
+    const invalid = structuredClone(original); invalid.content[0].props.id = id;
+    assert.throws(() => validateDocument("overview", invalid));
+  }
   const styled = structuredClone(original); styled.content[0].props.style = { display: "none" };
   assert.throws(() => validateDocument("overview", styled));
   const zoned = structuredClone(original); zoned.zones = { arbitrary: [] };
   assert.throws(() => validateDocument("overview", zoned));
+  const global = await document("global"); global.content = original.content;
+  assert.throws(() => validateDocument("global", global));
+});
+
+test("component styles and icon libraries are available on every page", () => {
+  for (const name of documentNames) {
+    const styles = stylesheetUrls(name);
+    assert.ok(styles.includes("/assets/css/certifications.css"));
+    assert.ok(styles.includes("/assets/css/error.css"));
+    assert.ok(styles.some(url => url.includes("devicon")));
+    assert.equal(styles.includes("/assets/css/accent-gradient.css"), name !== "not-found");
+  }
 });
 
 test("script links, protocol-relative links and unknown image paths are rejected", async () => {

@@ -12,7 +12,7 @@ Il sito non chiama l’editor: continua a funzionare anche quando la macchina Do
 ## Salva e Pubblica
 
 1. Scegliere una pagina nell’editor. **Header e profilo** gestisce i contenuti condivisi.
-2. Modificare i campi Puck e gli elementi degli elenchi. La struttura delle sezioni resta bloccata.
+2. Modificare i campi e gli elenchi oppure usare il catalogo Puck per inserire, duplicare, riordinare ed eliminare le sezioni. Gli otto tipi di sezione sono disponibili in tutte le pagine, inclusa la 404. Header e profilo restano la cornice condivisa modificabile tramite i suoi campi.
 3. **Salva** conserva la pagina corrente nel volume delle bozze. Non modifica GitHub o il sito pubblico.
 4. **Pubblica** invia tutte le pagine salvate e le nuove immagini referenziate in un unico commit. Non salva implicitamente il testo ancora aperto: finché ci sono modifiche non salvate il pulsante è disabilitato.
 5. Attendere il messaggio «Modifiche inviate. Il sito si aggiornerà tra qualche minuto».
@@ -142,7 +142,7 @@ In PowerShell con `npm.ps1` bloccato usare `npm.cmd`. In locale le bozze sono in
 - `content/`: contenuti pubblicati nel checkout, usati dalla build statica e come dati iniziali di un nuovo volume.
 - `public/assets/`: CSS e immagini originali; `uploads/` contiene le immagini già pubblicate.
 - `src/components.tsx` e `src/puck.config.tsx`: componenti, campi e rendering condivisi fra sito e anteprima Puck.
-- `src/content.ts`: tipi, validazione e struttura fissa delle pagine.
+- `src/content.ts`: tipi e validazione dei contenuti; le pagine accettano composizioni libere dei componenti registrati, con identificatori univoci.
 - `src/server/storage.ts`: inizializzazione e percorsi del volume delle bozze.
 - `src/server/publish.ts`: snapshot dei dati salvati e commit Git su un checkout temporaneo dell’ultimo branch remoto. Scrive soltanto i JSON previsti e gli upload referenziati; non usa force push.
 - `src/pages/api/`: API disponibili esclusivamente nel servizio editor. La route upload mantiene gli URL `/assets/uploads/...` anche per file aggiunti dopo l’avvio di Next.js.
