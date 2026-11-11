@@ -1,1 +1,15 @@
 /.idea/
+/node_modules/
+/.next-site/
+/.next-editor/
+/out/
+/.verification/
+/.sites-runtime/
+/.npm-cache/
+*.tsbuildinfo
+/.next/
+/next-env.d.ts
+/.editor-data/
+/.env*
+!/.env.editor.example
+/.wrangler/

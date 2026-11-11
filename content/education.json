@@ -1,0 +1,97 @@
+{
+  "root": {
+    "props": {
+      "documentTitle": "Francesco Grillea :: Education"
+    }
+  },
+  "content": [
+    {
+      "type": "Heading",
+      "props": {
+        "id": "heading",
+        "title": "Education"
+      }
+    },
+    {
+      "type": "Education",
+      "props": {
+        "id": "education",
+        "degrees": [
+          {
+            "image": {
+              "src": "/assets/imgs/education/msc.jpg",
+              "alt": "Master's degree diploma"
+            },
+            "institution": "University of Pisa · 2024",
+            "title": "MSc in Artificial Intelligence and Data Engineering",
+            "grade": "110 with honours / 110"
+          },
+          {
+            "image": {
+              "src": "/assets/imgs/education/bsc.png",
+              "alt": "Bachelor's degree diploma"
+            },
+            "institution": "University of Pisa · 2022",
+            "title": "BSc in Computer Science",
+            "grade": ""
+          }
+        ],
+        "certificationsTitle": "Certifications and Courses",
+        "certifications": [
+          {
+            "title": "Machine Learning Specialty",
+            "issuer": "Amazon Web Services",
+            "year": "2025",
+            "icon": {
+              "icon": "fa-brands fa-aws",
+              "label": "Amazon Web Services",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Reinforcement Fine-Tuning LLMs With GRPO",
+            "issuer": "DeepLearning.AI",
+            "year": "2025",
+            "icon": {
+              "icon": "image",
+              "label": "DeepLearning.AI",
+              "image": {
+                "src": "/assets/imgs/icons/deeplearningai.png",
+                "alt": "DeepLearning.AI"
+              }
+            }
+          },
+          {
+            "title": "Contamination Lab PhD+",
+            "issuer": "University of Pisa",
+            "year": "2023",
+            "icon": {
+              "icon": "image",
+              "label": "University of Pisa",
+              "image": {
+                "src": "/assets/imgs/icons/unipi.svg",
+                "alt": "University of Pisa"
+              }
+            }
+          },
+          {
+            "title": "CyberChallenge",
+            "issuer": "CINI Cybersecurity National Lab",
+            "year": "2021",
+            "icon": {
+              "icon": "image",
+              "label": "CINI Cybersecurity National Lab",
+              "image": {
+                "src": "/assets/imgs/icons/cini.png",
+                "alt": "CINI Cybersecurity National Lab"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

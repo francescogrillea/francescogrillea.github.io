@@ -1,0 +1,115 @@
+{
+  "root": {
+    "props": {
+      "documentTitle": "Francesco Grillea :: Research"
+    }
+  },
+  "content": [
+    {
+      "type": "Heading",
+      "props": {
+        "id": "heading",
+        "title": "Research"
+      }
+    },
+    {
+      "type": "Research",
+      "props": {
+        "id": "research",
+        "items": [
+          {
+            "title": "Comparing Reinforcement and Supervised Learning for tuning Large Language-specific Models (2024)",
+            "description": "Development of an Italian LLM using a multi-stage fine-tuning and reinforcement learning process, including\n          Direct Preference Optimization (DPO) and Proximal Policy Optimization (PPO) with the aim of improving language\n          proficiency,\n          content, and grammar correctness.",
+            "href": "https://etd.adm.unipi.it/t/etd-06282024-124447",
+            "icon": {
+              "icon": "fa-solid fa-file",
+              "label": "fa-solid fa-file",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Benchita",
+            "description": "High-quality few-shot benchmark suite for evaluating Italian Large Language Models,\n          supporting the assessment of language understanding, generation capabilities, and task-specific performance.",
+            "href": "https://github.com/galatolofederico/benchita",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Search Engine Implementation",
+            "description": "Implementation from scratch of a search engine based on an inverted-index architecture. The project includes\n          document indexing, query processing, and relevance ranking using BM25 and TF-IDF scoring functions.",
+            "href": "https://github.com/francescogrillea/SearchEngine_MIRCVProject",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "SpeakItalian",
+            "description": "A computer vision tool for hand gesture recognition, designed to detect and classify gestures\n          and enable more natural human-computer interaction.",
+            "href": "https://github.com/francescogrillea/SpeakItalian",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Heavy-Tailed Variational Autoencoders",
+            "description": "Variational Autoencoder architecture based on Normal, Log-Normal, and Inverse\n          Gaussian distributions. The project explores heavy-tailed latent-variable modelling for learning robust and\n          expressive latent representations.",
+            "href": "https://github.com/francescogrillea/HeavyTailed-VAE",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Movement formation of a swarm of Robots",
+            "description": "MATLAB and Simulink implementation of a multi-robot formation-control system. The project simulates a swarm\n          of robots coordinating their movement to maintain a predefined formation while navigating towards a target\n          position.",
+            "href": "https://github.com/francescogrillea/progettoRobotica",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          },
+          {
+            "title": "Anomaly Detection on Embedded Devices (2021)",
+            "description": "Deployment of an anomaly-detection model on NVIDIA Jetson Nano and Raspberry Pi devices for identifying\n          anomalous patterns in time-series telemetry data. The project focuses on enabling efficient edge-AI inference\n          in resource-constrained embedded environments. Research project part of HORIZON2020, an European program.",
+            "href": "https://github.com/francescogrillea/AnomalyDetectionTFLite",
+            "icon": {
+              "icon": "fab fa-github",
+              "label": "fab fa-github",
+              "image": {
+                "src": "",
+                "alt": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

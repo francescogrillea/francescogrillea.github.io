@@ -1,0 +1,198 @@
+{
+  "root": {
+    "props": {
+      "documentTitle": "Francesco Grillea"
+    }
+  },
+  "content": [
+    {
+      "type": "Intro",
+      "props": {
+        "id": "intro",
+        "title": "Hello, I'm Francesco!",
+        "description": "I am an Artificial Intelligence Engineer with a strong background in Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, Generative AI, and Reinforcement Learning. Experienced in developing,\n        evaluating, and deploying AI models and building end-to-end AI solutions. Alongside my expertise in AI, I have\n        knowledge of software engineering, cloud and computing infrastructure, and deployment technologies, allowing me\n        to bridge the gap between AI research, model development, and production-ready systems. Just a debug test to see if everything works correctly."
+      }
+    },
+    {
+      "type": "Timeline",
+      "props": {
+        "id": "experience",
+        "title": "Experience",
+        "items": [
+          {
+            "title": "Data Reply",
+            "subtitle": "Data Scientist, Sep 2024 - Now",
+            "start": "2024-09-01",
+            "end": "",
+            "details": [
+              {
+                "text": "Designed and delivered AI solutions on client infrastructure, covering requirements analysis,\n                  architecture, development, and production deployment."
+              },
+              {
+                "text": "Led cross-functional technical teams, coordinating task allocation, delivery priorities, code\n                  reviews, technical decisions, and day-to-day project activities."
+              },
+              {
+                "text": "Translated business needs into technical requirements, data models, and acceptance criteria in\n                  collaboration with business and non-technical stakeholders."
+              },
+              {
+                "text": "Estimated development effort, delivery timelines, resource requirements, and implementation costs to\n                  support project planning and delivery commitments."
+              }
+            ]
+          },
+          {
+            "title": "MSc in Artificial Intelligence and Data Engineering",
+            "subtitle": "University of Pisa, Sep 2022 - Jul 2024",
+            "start": "2022-09-01",
+            "end": "2024-07-01",
+            "details": []
+          },
+          {
+            "title": "BSc in Computer Science",
+            "subtitle": "University of Pisa, Sep 2018 - Apr 2022",
+            "start": "2018-09-01",
+            "end": "2022-04-01",
+            "details": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "Technologies",
+      "props": {
+        "id": "technologies",
+        "title": "Technologies",
+        "items": [
+          {
+            "icon": "devicon-amazonwebservices-plain-wordmark",
+            "label": "AWS",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-azure-plain",
+            "label": "Azure",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-docker-plain",
+            "label": "Docker",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-git-plain",
+            "label": "Git",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-googlecloud-plain",
+            "label": "Google Cloud",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-hadoop-plain",
+            "label": "Hadoop",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-html5-plain",
+            "label": "HTML5",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-java-plain",
+            "label": "Java",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-linux-plain",
+            "label": "Linux",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-matlab-plain",
+            "label": "MATLAB",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-mongodb-plain",
+            "label": "MongoDB",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-mysql-original",
+            "label": "MySQL",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-neo4j-plain",
+            "label": "Neo4j",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-python-plain",
+            "label": "Python",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-redis-plain",
+            "label": "Redis",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "icon": "devicon-javascript-plain",
+            "label": "JavaScript",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "zones": {}
+}

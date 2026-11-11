@@ -1,0 +1,32 @@
+{
+  "root": {
+    "props": {
+      "documentTitle": "Francesco Grillea :: 404"
+    }
+  },
+  "content": [
+    {
+      "type": "ErrorPage",
+      "props": {
+        "id": "error",
+        "emoji": "🚀",
+        "code": "404",
+        "title": "Lost in Space",
+        "description": [
+          {
+            "text": "Looks like you've ventured into unexplored territory."
+          },
+          {
+            "text": "This page doesn't exist, but your journey doesn't have to end here!"
+          }
+        ],
+        "homeLabel": "Back Home",
+        "projectsLabel": "Explore Projects",
+        "contactPrefix": "If you think this is a mistake, feel free to",
+        "contactLabel": "reach out",
+        "contactHref": "mailto:grilleafrancesco@gmail.com",
+        "contactSuffix": "."
+      }
+    }
+  ]
+}

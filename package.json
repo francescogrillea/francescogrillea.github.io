@@ -1,0 +1,39 @@
+{
+  "name": "francesco-grillea-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:site": "cross-env PORTFOLIO_MODE=site next dev --webpack --hostname 127.0.0.1 --port 3000",
+    "dev:editor": "cross-env PORTFOLIO_MODE=editor next dev --webpack --hostname 127.0.0.1 --port 3001",
+    "build": "cross-env PORTFOLIO_MODE=site next build --webpack",
+    "preview": "serve out --listen tcp://127.0.0.1:3000 --no-clipboard",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "build:editor": "cross-env PORTFOLIO_MODE=editor next build --webpack",
+    "deploy:site": "wrangler deploy"
+  },
+  "dependencies": {
+    "@puckeditor/core": "0.24.0",
+    "next": "16.4.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.0.0",
+    "file-type": "22.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "cross-env": "^10.0.0",
+    "serve": "^14.2.4",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "wrangler": "4.160.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "overrides": {
+    "compression": "1.8.2"
+  }
+}

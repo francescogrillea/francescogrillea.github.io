@@ -1,0 +1,79 @@
+{
+  "root": {
+    "props": {
+      "name": "Francesco Grillea",
+      "role": "AI Engineer",
+      "portrait": {
+        "src": "/assets/imgs/profile.png",
+        "alt": ""
+      },
+      "contacts": [
+        {
+          "label": "BIRTHDAY:",
+          "value": "12 March 2000",
+          "href": ""
+        },
+        {
+          "label": "WEBSITE:",
+          "value": "francescogrillea.com",
+          "href": "https://francescogrillea.com"
+        },
+        {
+          "label": "MAIL:",
+          "value": "grilleafrancesco@gmail.com",
+          "href": "mailto:grilleafrancesco@gmail.com"
+        },
+        {
+          "label": "PHONE:",
+          "value": "+39 380 589 6792",
+          "href": "tel:+393805896792"
+        },
+        {
+          "label": "LOCATION:",
+          "value": "Milan, Italy",
+          "href": ""
+        },
+        {
+          "label": "LANGUAGES:",
+          "value": "Italian, English",
+          "href": ""
+        }
+      ],
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/in/francescogrillea/",
+          "icon": {
+            "icon": "fab fa-linkedin",
+            "label": "fab fa-linkedin",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          }
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/francescogrillea",
+          "icon": {
+            "icon": "fab fa-github",
+            "label": "fab fa-github",
+            "image": {
+              "src": "",
+              "alt": ""
+            }
+          }
+        }
+      ],
+      "navigation": {
+        "overview": "OVERVIEW",
+        "research": "RESEARCH",
+        "projects": "PROJECTS",
+        "education": "EDUCATION"
+      },
+      "themeLabel": "Toggle theme"
+    }
+  },
+  "content": [],
+  "zones": {}
+}
