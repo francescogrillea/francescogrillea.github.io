@@ -1,7 +1,6 @@
 # Portfolio — Next.js, Puck, Cloudflare e Docker
 
 Un’unica repository, due deployment indipendenti:
-
 - **Sito pubblico**: Next.js esporta HTML/CSS/JS in `out/`; il Worker Cloudflare esistente serve questi file sul suo dominio.
 - **Editor**: Next.js in produzione dentro Docker, sul dominio dell’editor, dietro il proxy HTTPS già disponibile.
 - **Bozze**: JSON nativi Puck e upload in un volume persistente, separato dal codice.
